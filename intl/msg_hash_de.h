@@ -6,7 +6,7 @@
 #pragma warning(disable:4566)
 #endif
 
-#ifdef HAVE_LAKKA_SWITCH
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_NIRCADA_SWITCH)
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_SWITCH_GPU_PROFILE,
     "GPU Übertakten"
@@ -24,7 +24,7 @@ MSG_HASH(
     "Anpassen der Switch Bildschirmhelligkeit"
     )
 #endif
-#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX)
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX) || defined(HAVE_NIRCADA_SWITCH)
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_SWITCH_CPU_PROFILE,
     "CPU Übertakten"
@@ -406,7 +406,7 @@ MSG_HASH(
       MENU_ENUM_LABEL_VALUE_BLOCK_SRAM_OVERWRITE,
       "Überschreibe SaveRAM nicht, wenn ein Zustand (Savestate) geladen wird"
       )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
       MENU_ENUM_LABEL_VALUE_BLUETOOTH_ENABLE,
       "Bluetooth aktivieren"
@@ -917,6 +917,10 @@ MSG_HASH(MENU_ENUM_LABEL_VALUE_JOYPAD_DRIVER,
 MSG_HASH(MENU_ENUM_LABEL_VALUE_LAKKA_SERVICES,
       "Services")
 #endif
+#ifdef HAVE_NIRCADA
+MSG_HASH(MENU_ENUM_LABEL_VALUE_NIRCADA_SERVICES,
+      "Services")
+#endif
 MSG_HASH(MENU_ENUM_LABEL_VALUE_LANG_CHINESE_SIMPLIFIED,
       "Chinesisch (vereinfacht)")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_LANG_CHINESE_TRADITIONAL,
@@ -1291,7 +1295,7 @@ MSG_HASH(MENU_ENUM_LABEL_VALUE_RDB_ENTRY_START_CONTENT,
       "Starte Inhalt")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_RDB_ENTRY_TGDB_RATING,
       "TGDB-Bewertung")
-#ifdef HAVE_LAKKA_SWITCH
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_NIRCADA_SWITCH)
 MSG_HASH(MENU_ENUM_LABEL_VALUE_REBOOT,
       "Neustart (RCM)")
 #else
@@ -1366,7 +1370,7 @@ MSG_HASH(MENU_ENUM_LABEL_VALUE_RUN,
       "Starten")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_RUN_MUSIC,
       "Abspielen")
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(MENU_ENUM_LABEL_VALUE_SAMBA_ENABLE,
       "SAMBA aktivieren")
 #endif
@@ -1446,7 +1450,7 @@ MSG_HASH(MENU_ENUM_LABEL_VALUE_SYSTEMFILES_IN_CONTENT_DIR_ENABLE,
       "Systemdateien befinden sich im Verzeichnis des Inhalts")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_SCREENSHOTS_IN_CONTENT_DIR_ENABLE,
       "Bildschirmfotos im Verzeichnis des Inhalts speichern")
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(MENU_ENUM_LABEL_VALUE_SSH_ENABLE,
       "SSH aktivieren")
 #endif
@@ -1528,8 +1532,8 @@ MSG_HASH(MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_JACK_SUPPORT,
       "JACK-Unterstützung")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_KMS_SUPPORT,
       "KMS/EGL-Unterstützung")
-MSG_HASH(MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_LAKKA_VERSION,
-      "Lakka-Version")
+MSG_HASH(MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_NIRCADA_VERSION,
+      "NircadaOS-Version")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_LIBRETRODB_SUPPORT,
       "LibretroDB-Unterstützung")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_LIBUSB_SUPPORT,
@@ -1660,8 +1664,8 @@ MSG_HASH(MENU_ENUM_LABEL_VALUE_UPDATE_DATABASES,
       "Datenbanken aktualisieren")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_UPDATE_GLSL_SHADERS,
       "GLSL-Shader aktualisieren")
-MSG_HASH(MENU_ENUM_LABEL_VALUE_UPDATE_LAKKA,
-      "Lakka aktualisieren")
+MSG_HASH(MENU_ENUM_LABEL_VALUE_UPDATE_NIRCADA,
+      "NircadaOS aktualisieren")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_UPDATE_OVERLAYS,
       "Overlays aktualisieren")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_UPDATE_SLANG_SHADERS,
@@ -1824,6 +1828,8 @@ MSG_HASH(MENU_ENUM_LABEL_VALUE_XMB_ICON_THEME_CUSTOM,
       "Benutzerdefiniert")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_XMB_ICON_THEME_FLATUI,
       "FlatUI")
+MSG_HASH(MENU_ENUM_LABEL_VALUE_XMB_ICON_THEME_TOORONTO,
+      "Tooronto")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_XMB_ICON_THEME_MONOCHROME,
       "Monochrome")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_XMB_ICON_THEME_MONOCHROME_INVERTED,
@@ -1934,7 +1940,7 @@ MSG_HASH(MENU_ENUM_SUBLABEL_ADD_CONTENT_LIST,
       "Sucht nach Inhalten und fügt diese zur Datenbank hinzu.")
 MSG_HASH(MENU_ENUM_SUBLABEL_AUDIO_SETTINGS,
       "Ändere die Einstellungen der Audio-Ausgabe.")
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(MENU_ENUM_SUBLABEL_BLUETOOTH_ENABLE,
       "Aktiviere oder deaktiviere Bluetooth.")
 #endif
@@ -1966,7 +1972,7 @@ MSG_HASH(MENU_ENUM_SUBLABEL_INFORMATION_LIST_LIST,
       "Zeige Informationen über Core, Netzwerk und das System an.")
 MSG_HASH(MENU_ENUM_SUBLABEL_ONLINE_UPDATER,
       "Lade Erweiterungen, Komponenten und Inhalte für RetroArch herunter.")
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(MENU_ENUM_SUBLABEL_SAMBA_ENABLE,
       "Aktiviere die Netzwerkfreigabe deiner Ordner.")
 MSG_HASH(MENU_ENUM_SUBLABEL_SERVICES_SETTINGS,
@@ -1974,7 +1980,7 @@ MSG_HASH(MENU_ENUM_SUBLABEL_SERVICES_SETTINGS,
 #endif
 MSG_HASH(MENU_ENUM_SUBLABEL_SHOW_HIDDEN_FILES,
       "Zeige versteckte Dateien und Ordner im Dateimanager an.")
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(MENU_ENUM_SUBLABEL_SSH_ENABLE,
       "Aktiviere Fernzugriff auf die Kommandozeile.")
 #endif

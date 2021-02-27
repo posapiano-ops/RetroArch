@@ -242,7 +242,7 @@ MSG_HASH(
       MENU_ENUM_LABEL_VALUE_BLOCK_SRAM_OVERWRITE,
       "Khi tải savestate đừng ghi đè SaveRAM"
       )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
       MENU_ENUM_LABEL_VALUE_BLUETOOTH_ENABLE,
       "Kích hoạt Bluetooth"
@@ -519,7 +519,7 @@ MSG_HASH(MENU_ENUM_LABEL_VALUE_OVERLAY_AUTOLOAD_PREFERRED,
       "Tự động tải Preferred Overlay")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_PLAYLIST_DIRECTORY,
       "Playlists Danh mục")
-#ifdef HAVE_LAKKA_SWITCH
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_NIRCADA_SWITCH)
 MSG_HASH(MENU_ENUM_LABEL_VALUE_REBOOT,
       "Khởi động lại (RCM)")
 #else
@@ -534,7 +534,7 @@ MSG_HASH(MENU_ENUM_LABEL_VALUE_REWIND_ENABLE,
       "Kích hoạt Rewind")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_RGUI_CONFIG_DIRECTORY,
       "Config Danh mục")
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(MENU_ENUM_LABEL_VALUE_SAMBA_ENABLE,
       "Kích hoạt SAMBA")
 #endif
@@ -560,7 +560,7 @@ MSG_HASH(MENU_ENUM_LABEL_VALUE_SHOW_HIDDEN_FILES,
       "Show Hidden Files and Folders")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_SHUTDOWN,
       "Tắt Máy")
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(MENU_ENUM_LABEL_VALUE_SSH_ENABLE,
       "Kích hoạt SSH")
 #endif
@@ -586,8 +586,8 @@ MSG_HASH(MENU_ENUM_LABEL_VALUE_UPDATE_DATABASES,
       "Cập nhật Databases")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_UPDATE_GLSL_SHADERS,
       "Cập nhật GLSL Shaders")
-MSG_HASH(MENU_ENUM_LABEL_VALUE_UPDATE_LAKKA,
-      "Cập nhật Lakka")
+MSG_HASH(MENU_ENUM_LABEL_VALUE_UPDATE_NIRCADA,
+      "Cập nhật NircadaOS")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_UPDATE_OVERLAYS,
       "Cập nhật Overlays")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_UPDATE_SLANG_SHADERS,
@@ -618,7 +618,7 @@ MSG_HASH(MENU_ENUM_SUBLABEL_ADD_CONTENT_LIST,
       "Tải/quét nội dung và thêm vào bộ sưu tập.")
 MSG_HASH(MENU_ENUM_SUBLABEL_AUDIO_SETTINGS,
       "Điều chỉnh thiết lập cho âm thanh ra.")
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(MENU_ENUM_SUBLABEL_BLUETOOTH_ENABLE,
       "Bật/tắt bluetooth.")
 #endif
@@ -642,7 +642,7 @@ MSG_HASH(MENU_ENUM_SUBLABEL_NETPLAY,
       "Tham gia hoặc làm máy chủ cho netplay.")
 MSG_HASH(MENU_ENUM_SUBLABEL_ONLINE_UPDATER,
       "Tải/cập nhật tiện ích và thành phần của RetroArch.")
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(MENU_ENUM_SUBLABEL_SAMBA_ENABLE,
       "Bật/tắt chia sẻ thư mục trên mạng.")
 MSG_HASH(MENU_ENUM_SUBLABEL_SERVICES_SETTINGS,
@@ -650,7 +650,7 @@ MSG_HASH(MENU_ENUM_SUBLABEL_SERVICES_SETTINGS,
 #endif
 MSG_HASH(MENU_ENUM_SUBLABEL_SHOW_HIDDEN_FILES,
       "Hiện ra tập tin và thư mục ẩn trong trình duyệt tập tin.")
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(MENU_ENUM_SUBLABEL_SSH_ENABLE,
       "Bật/tắt giao thức SSH.")
 #endif

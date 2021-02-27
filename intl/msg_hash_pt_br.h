@@ -6,7 +6,7 @@
 #pragma warning(disable:4566)
 #endif
 
-#ifdef HAVE_LAKKA_SWITCH
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_NIRCADA_SWITCH)
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_SWITCH_GPU_PROFILE,
     "Overclock da GPU"
@@ -24,7 +24,7 @@ MSG_HASH(
     "Aumenta ou diminui o brilho da tela do Switch"
     )
 #endif
-#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX)
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX) || defined(HAVE_NIRCADA_SWITCH)
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_SWITCH_CPU_PROFILE,
     "Overclock da CPU"
@@ -474,7 +474,7 @@ MSG_HASH(
     MENU_ENUM_LABEL_VALUE_BLOCK_SRAM_OVERWRITE,
     "Não Sobregravar a SRAM ao Carregar Estado de Jogo"
     )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_BLUETOOTH_ENABLE,
     "Habilitar Bluetooth"
@@ -1362,7 +1362,7 @@ MSG_HASH(
     MENU_ENUM_LABEL_VALUE_INPUT_META_PAUSE_TOGGLE,
     "Alternar pausa"
     )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_INPUT_META_QUIT_KEY,
     "Reiniciar o RetroArch"
@@ -1532,6 +1532,12 @@ MSG_HASH(
 #ifdef HAVE_LAKKA
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_LAKKA_SERVICES,
+    "Serviços"
+    )
+#endif
+#ifdef HAVE_NIRCADA
+MSG_HASH(
+    MENU_ENUM_LABEL_VALUE_NIRCADA_SERVICES,
     "Serviços"
     )
 #endif
@@ -2419,7 +2425,7 @@ MSG_HASH(
     MENU_ENUM_LABEL_VALUE_MIDI_SETTINGS,
     "MIDI"
     )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_QUIT_RETROARCH,
     "Reiniciar o RetroArch"
@@ -2578,7 +2584,7 @@ MSG_HASH(
     MENU_ENUM_LABEL_VALUE_CONTENT_INFO_LAST_PLAYED,
     "Última Partida"
     )
-#ifdef HAVE_LAKKA_SWITCH
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_NIRCADA_SWITCH)
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_REBOOT,
     "Reiniciar (RCM)"
@@ -2781,7 +2787,7 @@ MSG_HASH(
     MENU_ENUM_LABEL_VALUE_RUN_MUSIC,
     "Executar"
     )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_SAMBA_ENABLE,
     "Habilitar SAMBA"
@@ -2959,7 +2965,7 @@ MSG_HASH(
     MENU_ENUM_LABEL_VALUE_SCREENSHOTS_IN_CONTENT_DIR_ENABLE,
     "Salvar Capturas de Tela no Diretório de Conteúdo"
     )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_SSH_ENABLE,
     "Habilitar SSH"
@@ -3126,8 +3132,8 @@ MSG_HASH(
     "Suporte a KMS/EGL"
     )
 MSG_HASH(
-    MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_LAKKA_VERSION,
-    "Versão Lakka"
+    MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_NIRCADA_VERSION,
+    "Versão NircadaOS"
     )
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_LIBRETRODB_SUPPORT,
@@ -3810,8 +3816,8 @@ MSG_HASH(
     "Atualizar Shaders GLSL"
     )
 MSG_HASH(
-    MENU_ENUM_LABEL_VALUE_UPDATE_LAKKA,
-    "Atualizar Lakka"
+    MENU_ENUM_LABEL_VALUE_UPDATE_NIRCADA,
+    "Atualizar NircadaOS"
     )
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_UPDATE_OVERLAYS,
@@ -4230,6 +4236,10 @@ MSG_HASH(
     "FlatUI"
     )
 MSG_HASH(
+    MENU_ENUM_LABEL_VALUE_XMB_ICON_THEME_TOORONTO,
+    "Tooronto"
+    )
+MSG_HASH(
     MENU_ENUM_LABEL_VALUE_XMB_ICON_THEME_MONOCHROME,
     "Monocromático"
     )
@@ -4485,7 +4495,7 @@ MSG_HASH(
     MENU_ENUM_SUBLABEL_AUDIO_SETTINGS,
     "Altera as configurações de saída de áudio."
     )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
     MENU_ENUM_SUBLABEL_BLUETOOTH_ENABLE,
     "Habilita ou desabilita o bluetooth."
@@ -4559,7 +4569,7 @@ MSG_HASH(
     MENU_ENUM_SUBLABEL_ONLINE_UPDATER,
     "Baixa complementos, componentes e conteúdo para o RetroArch."
     )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
     MENU_ENUM_SUBLABEL_SAMBA_ENABLE,
     "Habilita ou desabilita o compartilhamento de pastas na rede."
@@ -4573,7 +4583,7 @@ MSG_HASH(
     MENU_ENUM_SUBLABEL_SHOW_HIDDEN_FILES,
     "Exibe arquivos/diretórios ocultos no navegador de arquivos."
     )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
     MENU_ENUM_SUBLABEL_SSH_ENABLE,
     "Habilita ou desabilita o acesso remoto à linha de comando."
@@ -5849,7 +5859,7 @@ MSG_HASH(
     MENU_ENUM_SUBLABEL_SYSTEM_INFORMATION,
     "Exibe informações específicas do dispositivo."
     )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
     MENU_ENUM_SUBLABEL_QUIT_RETROARCH,
     "Reinicia o programa."
@@ -7111,7 +7121,7 @@ MSG_HASH(
     MENU_ENUM_SUBLABEL_MENU_SHOW_HELP,
     "Exibi ou oculta a opção 'Ajuda'."
     )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_MENU_SHOW_QUIT_RETROARCH,
     "Exibir 'Sair do RetroArch'"
@@ -9902,7 +9912,7 @@ MSG_HASH(
     MENU_ENUM_LABEL_VALUE_DELETE_PLAYLIST,
     "Excluir lista de reprodução"
     )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_LOCALAP_ENABLE,
     "Ponto de Acesso Wi-Fi"

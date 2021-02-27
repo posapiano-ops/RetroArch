@@ -53,6 +53,10 @@
 #include "../../lakka.h"
 #endif
 
+#ifdef HAVE_NIRCADA_SWITCH
+#include "../../nircada.h"
+#endif
+
 #ifdef HAVE_LIBNX
 #include <switch.h>
 #include "../../switch_performance_profiles.h"
@@ -550,6 +554,23 @@ static unsigned menu_displaylist_parse_system_info(file_list_t *list)
 
          fill_pathname_join_concat_noext(tmp,
                msg_hash_to_str(MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_LAKKA_VERSION),
+               ": ",
+               tmp2,
+               sizeof(tmp));
+         if (menu_entries_append_enum(list, tmp, "",
+               MENU_ENUM_LABEL_SYSTEM_INFO_ENTRY,
+               MENU_SETTINGS_CORE_INFO_NONE, 0, 0))
+            count++;
+      }
+#endif
+
+#ifdef HAVE_NIRCADA
+      if (frontend->get_nircada_version)
+      {
+         frontend->get_nircada_version(tmp2, sizeof(tmp2));
+
+         fill_pathname_join_concat_noext(tmp,
+               msg_hash_to_str(MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_NIRCADA_VERSION),
                ": ",
                tmp2,
                sizeof(tmp));
@@ -1584,6 +1605,10 @@ static int menu_displaylist_parse_settings_internal_enum(
       if (flags & SD_FLAG_LAKKA_ADVANCED)
          goto end;
 #endif
+#ifdef HAVE_NIRCADA
+      if (flags & SD_FLAG_NIRCADA_ADVANCED)
+         goto end;
+#endif
    }
 
    for (;;)
@@ -1801,7 +1826,7 @@ static int menu_displaylist_parse_load_content_settings(
 
    if (!rarch_ctl(RARCH_CTL_IS_DUMMY_CORE, NULL))
    {
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
       bool show_advanced_settings    = settings->bools.menu_show_advanced_settings;
 #endif
       rarch_system_info_t *system    = runloop_get_system_info();
@@ -6182,6 +6207,26 @@ unsigned menu_displaylist_build_list(file_list_t *list, enum menu_displaylist_ct
          }
          break;
 #endif
+#ifdef HAVE_NIRCADA
+      case DISPLAYLIST_NIRCADA_SERVICES_LIST:
+         {
+            menu_displaylist_build_info_t build_list[] = {
+               {MENU_ENUM_LABEL_SSH_ENABLE,                                            PARSE_ONLY_BOOL},
+               {MENU_ENUM_LABEL_SAMBA_ENABLE,                                          PARSE_ONLY_BOOL},
+               {MENU_ENUM_LABEL_BLUETOOTH_ENABLE,                                      PARSE_ONLY_BOOL},
+               {MENU_ENUM_LABEL_LOCALAP_ENABLE,                                        PARSE_ONLY_BOOL},
+            };
+
+            for (i = 0; i < ARRAY_SIZE(build_list); i++)
+            {
+               if (menu_displaylist_parse_settings_enum(list,
+                        build_list[i].enum_idx,  build_list[i].parse_type,
+                        false) == 0)
+                  count++;
+            }
+         }
+         break;
+#endif
       case DISPLAYLIST_MENU_VIEWS_SETTINGS_LIST:
          {
             menu_displaylist_build_info_selective_t build_list[] = {
@@ -6589,7 +6634,7 @@ unsigned menu_displaylist_build_list(file_list_t *list, enum menu_displaylist_ct
                {MENU_ENUM_LABEL_WIFI_SETTINGS,PARSE_ACTION, true},
                {MENU_ENUM_LABEL_NETWORK_SETTINGS,PARSE_ACTION, true},
                {MENU_ENUM_LABEL_NETPLAY_LAN_SCAN_SETTINGS,PARSE_ACTION, true},
-               {MENU_ENUM_LABEL_LAKKA_SERVICES,PARSE_ACTION, true},
+               {MENU_ENUM_LABEL_NIRCADA_SERVICES,PARSE_ACTION, true},
                {MENU_ENUM_LABEL_PLAYLIST_SETTINGS,PARSE_ACTION, true},
                {MENU_ENUM_LABEL_USER_SETTINGS,PARSE_ACTION, true},
                {MENU_ENUM_LABEL_DIRECTORY_SETTINGS,PARSE_ACTION, true},
@@ -6964,7 +7009,7 @@ unsigned menu_displaylist_build_list(file_list_t *list, enum menu_displaylist_ct
                {MENU_ENUM_LABEL_MENU_DRIVER,           PARSE_ONLY_STRING_OPTIONS},
                {MENU_ENUM_LABEL_RECORD_DRIVER,         PARSE_ONLY_STRING_OPTIONS},
                {MENU_ENUM_LABEL_MIDI_DRIVER,           PARSE_ONLY_STRING_OPTIONS},
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
                {MENU_ENUM_LABEL_WIFI_DRIVER,           PARSE_ONLY_STRING_OPTIONS},
 #endif
             };
@@ -7908,7 +7953,7 @@ bool menu_displaylist_ctl(enum menu_displaylist_ctl_state type,
          /* No-op */
          break;
 #endif
-#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX)
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX) || defined(HAVE_NIRCADA_SWITCH)
       case DISPLAYLIST_SWITCH_CPU_PROFILE:
       {
          unsigned i;
@@ -7921,7 +7966,7 @@ bool menu_displaylist_ctl(enum menu_displaylist_ctl_state type,
 
          menu_entries_ctl(MENU_ENTRIES_CTL_CLEAR, info->list);
 
-#ifdef HAVE_LAKKA_SWITCH
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_NIRCADA_SWITCH)
          profile = popen("cpu-profile get", "r");
          fgets(current_profile, PATH_MAX_LENGTH, profile);
          pclose(profile);
@@ -7970,7 +8015,7 @@ bool menu_displaylist_ctl(enum menu_displaylist_ctl_state type,
 
          break;
       }
-#if defined(HAVE_LAKKA_SWITCH)
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_NIRCADA_SWITCH)
       case DISPLAYLIST_SWITCH_GPU_PROFILE:
       {
          unsigned i;
@@ -8559,11 +8604,11 @@ bool menu_displaylist_ctl(enum menu_displaylist_ctl_state type,
          info->need_clear   = true;
 #endif
          break;
-      case DISPLAYLIST_LAKKA:
+      case DISPLAYLIST_NIRCADA:
          menu_entries_ctl(MENU_ENTRIES_CTL_CLEAR, info->list);
 #ifdef HAVE_NETWORKING
          count = print_buf_lines(info->list, menu->core_buf, "",
-               (int)menu->core_len, FILE_TYPE_DOWNLOAD_LAKKA,
+               (int)menu->core_len, FILE_TYPE_DOWNLOAD_NIRCADA,
                true, false);
 
          if (count == 0)
@@ -9184,7 +9229,7 @@ bool menu_displaylist_ctl(enum menu_displaylist_ctl_state type,
       case DISPLAYLIST_ACCOUNTS_LIST:
       case DISPLAYLIST_MENU_FILE_BROWSER_SETTINGS_LIST:
       case DISPLAYLIST_MENU_VIEWS_SETTINGS_LIST:
-      case DISPLAYLIST_LAKKA_SERVICES_LIST:
+      case DISPLAYLIST_NIRCADA_SERVICES_LIST:
       case DISPLAYLIST_MIDI_SETTINGS_LIST:
       case DISPLAYLIST_CRT_SWITCHRES_SETTINGS_LIST:
       case DISPLAYLIST_VIDEO_FULLSCREEN_MODE_SETTINGS_LIST:
@@ -9358,6 +9403,36 @@ bool menu_displaylist_ctl(enum menu_displaylist_ctl_state type,
                      msg_hash_to_str(MENU_ENUM_LABEL_VALUE_UPDATE_LAKKA),
                      msg_hash_to_str(MENU_ENUM_LABEL_UPDATE_LAKKA),
                      MENU_ENUM_LABEL_UPDATE_LAKKA,
+                     MENU_SETTING_ACTION, 0, 0))
+               count++;
+
+            if (settings->bools.menu_show_legacy_thumbnail_updater)
+            {
+               if (menu_entries_append_enum(info->list,
+                        msg_hash_to_str(MENU_ENUM_LABEL_VALUE_THUMBNAILS_UPDATER_LIST),
+                        msg_hash_to_str(MENU_ENUM_LABEL_THUMBNAILS_UPDATER_LIST),
+                        MENU_ENUM_LABEL_THUMBNAILS_UPDATER_LIST,
+                        MENU_SETTING_ACTION, 0, 0))
+                  count++;
+            }
+
+            if (menu_entries_append_enum(info->list,
+                     msg_hash_to_str(MENU_ENUM_LABEL_VALUE_PL_THUMBNAILS_UPDATER_LIST),
+                     msg_hash_to_str(MENU_ENUM_LABEL_PL_THUMBNAILS_UPDATER_LIST),
+                     MENU_ENUM_LABEL_PL_THUMBNAILS_UPDATER_LIST,
+                     MENU_SETTING_ACTION, 0, 0))
+               count++;
+            if (menu_entries_append_enum(info->list,
+                     msg_hash_to_str(MENU_ENUM_LABEL_VALUE_DOWNLOAD_CORE_CONTENT),
+                     msg_hash_to_str(MENU_ENUM_LABEL_DOWNLOAD_CORE_CONTENT_DIRS),
+                     MENU_ENUM_LABEL_DOWNLOAD_CORE_CONTENT_DIRS,
+                     MENU_SETTING_ACTION, 0, 0))
+               count++;
+#elif defined(HAVE_NIRCADA)
+            if (menu_entries_append_enum(info->list,
+                     msg_hash_to_str(MENU_ENUM_LABEL_VALUE_UPDATE_NIRCADA),
+                     msg_hash_to_str(MENU_ENUM_LABEL_UPDATE_NIRCADA),
+                     MENU_ENUM_LABEL_UPDATE_NIRCADA,
                      MENU_SETTING_ACTION, 0, 0))
                count++;
 

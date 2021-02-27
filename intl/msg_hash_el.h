@@ -410,7 +410,7 @@ MSG_HASH(
     MENU_ENUM_LABEL_VALUE_BLOCK_SRAM_OVERWRITE,
     "Απενεργοποίηση αντικατάστασης SaveRAM κατά την φάση φόρτωσης κατάστασης αποθήκευσης"
     )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_BLUETOOTH_ENABLE,
     "Ενεργοποίηση Bluetooth"
@@ -1310,6 +1310,12 @@ MSG_HASH(
     "Υπηρεσίες"
     )
 #endif
+#ifdef HAVE_NIRCADA
+MSG_HASH(
+    MENU_ENUM_LABEL_VALUE_NIRCADA_SERVICES,
+    "Υπηρεσίες"
+    )
+#endif
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_LANG_CHINESE_SIMPLIFIED,
     "Κινέζικα (Απλοποιημένα)"
@@ -1914,7 +1920,7 @@ MSG_HASH(
     MENU_ENUM_LABEL_VALUE_RUN_MUSIC,
     "Εκκίνηση"
     )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_SAMBA_ENABLE,
     "Ενεργοποίηση SAMBA"
@@ -2016,7 +2022,7 @@ MSG_HASH(
     MENU_ENUM_LABEL_VALUE_SHUTDOWN,
     "Τερματισμός"
     )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_SSH_ENABLE,
     "Ενεργοποίηση SSH"
@@ -2179,8 +2185,8 @@ MSG_HASH(
     "Υποστήριξη KMS/EGL"
     )
 MSG_HASH(
-    MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_LAKKA_VERSION,
-    "Έκδοση Lakka"
+    MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_NIRCADA_VERSION,
+    "Έκδοση NircadaOS"
     )
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_LIBRETRODB_SUPPORT,
@@ -2495,8 +2501,8 @@ MSG_HASH(
     "Ενημέρωση Σκιάσεων GLSL"
     )
 MSG_HASH(
-    MENU_ENUM_LABEL_VALUE_UPDATE_LAKKA,
-    "Ενημέρωση Lakka"
+    MENU_ENUM_LABEL_VALUE_UPDATE_NIRCADA,
+    "Ενημέρωση NircadaOS"
     )
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_UPDATE_OVERLAYS,
@@ -2936,7 +2942,7 @@ MSG_HASH(
     MENU_ENUM_SUBLABEL_AUDIO_SETTINGS,
     "Αλλαγή ρυθμίσεων εξόδου ήχου."
     )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
     MENU_ENUM_SUBLABEL_BLUETOOTH_ENABLE,
     "Ενεργοποίηση ή απενεργοποίηση bluetooth."

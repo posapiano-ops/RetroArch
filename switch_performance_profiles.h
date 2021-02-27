@@ -17,8 +17,8 @@
 #ifndef __SWITCH_PERFORMANCE_PROFILES_H
 #define __SWITCH_PERFORMANCE_PROFILES_H
 
-#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX)
-#ifdef HAVE_LAKKA_SWITCH
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX) || defined(HAVE_NIRCADA_SWITCH)
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_NIRCADA_SWITCH)
 static char *SWITCH_GPU_PROFILES[] = {
     "Docked Stock +2",
     "Docked Stock +1",

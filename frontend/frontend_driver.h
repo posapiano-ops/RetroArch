@@ -105,6 +105,9 @@ typedef struct frontend_ctx_driver
 #ifdef HAVE_LAKKA
    void (*get_lakka_version)(char *, size_t);
 #endif
+#ifdef HAVE_NIRCADA
+   void (*get_nircada_version)(char *, size_t);
+#endif
    void (*watch_path_for_changes)(struct string_list *list, int flags, path_change_data_t **change_data);
    bool (*check_for_path_changes)(path_change_data_t *change_data);
    void (*set_sustained_performance_mode)(bool on);

@@ -1,10 +1,10 @@
-#ifdef HAVE_LAKKA_SWITCH
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_NIRCADA_SWITCH)
 MSG_HASH(MENU_ENUM_LABEL_SWITCH_GPU_PROFILE,
       "switch_gpu_profile")
 MSG_HASH(MENU_ENUM_LABEL_SWITCH_BACKLIGHT_CONTROL,
       "switch_backlight_control")
 #endif
-#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX)
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX) || defined(HAVE_NIRCADA_SWITCH)
 MSG_HASH(MENU_ENUM_LABEL_SWITCH_CPU_PROFILE,
       "switch_cpu_profile")
 #endif
@@ -88,7 +88,7 @@ MSG_HASH(MENU_ENUM_LABEL_AUTO_SHADERS_ENABLE,
       "auto_shaders_enable")
 MSG_HASH(MENU_ENUM_LABEL_BLOCK_SRAM_OVERWRITE,
       "block_sram_overwrite")
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(MENU_ENUM_LABEL_BLUETOOTH_ENABLE,
       "bluetooth_enable")
 #endif
@@ -116,10 +116,10 @@ MSG_HASH(MENU_ENUM_LABEL_CB_CORE_UPDATER_LIST,
       "cb_core_updater_list")
 MSG_HASH(MENU_ENUM_LABEL_CB_DOWNLOAD_URL,
       "cb_download_url")
-MSG_HASH(MENU_ENUM_LABEL_CB_LAKKA_DOWNLOAD,
-      "cb_lakka_download")
-MSG_HASH(MENU_ENUM_LABEL_CB_LAKKA_LIST,
-      "cb_lakka_list")
+MSG_HASH(MENU_ENUM_LABEL_CB_NIRCADA_DOWNLOAD,
+      "cb_nircada_download")
+MSG_HASH(MENU_ENUM_LABEL_CB_NIRCADA_LIST,
+      "cb_nircada_list")
 MSG_HASH(MENU_ENUM_LABEL_CB_MENU_THUMBNAIL,
       "cb_menu_thumbnail")
 MSG_HASH(MENU_ENUM_LABEL_CB_MENU_WALLPAPER,
@@ -384,10 +384,10 @@ MSG_HASH(MENU_ENUM_LABEL_DEFERRED_AI_SERVICE_SETTINGS_LIST,
       "deferred_ai_service_settings_list")
 MSG_HASH(MENU_ENUM_LABEL_DEFERRED_ACCESSIBILITY_SETTINGS_LIST,
       "deferred_accessibility_settings_list")
-MSG_HASH(MENU_ENUM_LABEL_DEFERRED_LAKKA_LIST,
-      "deferred_lakka_list")
-MSG_HASH(MENU_ENUM_LABEL_DEFERRED_LAKKA_SERVICES_LIST,
-      "deferred_lakka_services_list")
+MSG_HASH(MENU_ENUM_LABEL_DEFERRED_NIRCADA_LIST,
+      "deferred_nircada_list")
+MSG_HASH(MENU_ENUM_LABEL_DEFERRED_NIRCADA_SERVICES_LIST,
+      "deferred_nircada_services_list")
 MSG_HASH(MENU_ENUM_LABEL_DEFERRED_LOGGING_SETTINGS_LIST,
       "deferred_logging_settings_list")
 MSG_HASH(MENU_ENUM_LABEL_DEFERRED_MENU_FILE_BROWSER_SETTINGS_LIST,
@@ -706,8 +706,8 @@ MSG_HASH(MENU_ENUM_LABEL_JOYPAD_AUTOCONFIG_DIR,
       "joypad_autoconfig_dir")
 MSG_HASH(MENU_ENUM_LABEL_JOYPAD_DRIVER,
       "input_joypad_driver")
-MSG_HASH(MENU_ENUM_LABEL_LAKKA_SERVICES,
-      "lakka_services")
+MSG_HASH(MENU_ENUM_LABEL_NIRCADA_SERVICES,
+      "nircada_services")
 MSG_HASH(MENU_ENUM_LABEL_LIBRETRO_DIR_PATH,
       "libretro_dir_path")
 MSG_HASH(MENU_ENUM_LABEL_LIBRETRO_INFO_PATH,
@@ -1178,7 +1178,7 @@ MSG_HASH(MENU_ENUM_LABEL_RUN,
       "collection")
 MSG_HASH(MENU_ENUM_LABEL_RUN_MUSIC,
       "collection_music")
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(MENU_ENUM_LABEL_SAMBA_ENABLE,
       "samba_enable")
 #endif
@@ -1260,7 +1260,7 @@ MSG_HASH(MENU_ENUM_LABEL_SYSTEMFILES_IN_CONTENT_DIR_ENABLE,
       "systemfiles_in_content_dir_enable")
 MSG_HASH(MENU_ENUM_LABEL_SCREENSHOTS_IN_CONTENT_DIR_ENABLE,
       "screenshots_in_content_dir_enable")
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(MENU_ENUM_LABEL_SSH_ENABLE,
       "ssh_enable")
 #endif
@@ -1356,8 +1356,8 @@ MSG_HASH(MENU_ENUM_LABEL_UPDATE_DATABASES,
       "update_databases")
 MSG_HASH(MENU_ENUM_LABEL_UPDATE_GLSL_SHADERS,
       "update_glsl_shaders")
-MSG_HASH(MENU_ENUM_LABEL_UPDATE_LAKKA,
-      "update_lakka")
+MSG_HASH(MENU_ENUM_LABEL_UPDATE_NIRCADA,
+      "update_NircdaOS")
 MSG_HASH(MENU_ENUM_LABEL_UPDATE_OVERLAYS,
       "update_overlays")
 MSG_HASH(MENU_ENUM_LABEL_UPDATE_SLANG_SHADERS,
@@ -2164,7 +2164,7 @@ MSG_HASH(MENU_ENUM_LABEL_FRAME_TIME_COUNTER_RESET_AFTER_SAVE_STATE,
       "frame_time_counter_reset_after_save_state")
 MSG_HASH(MENU_ENUM_LABEL_DELETE_PLAYLIST,
       "delete_playlist")
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(MENU_ENUM_LABEL_LOCALAP_ENABLE,
       "localap_enable")
 #endif

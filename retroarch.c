@@ -810,7 +810,7 @@ static wifi_driver_t wifi_null = {
 };
 
 static const wifi_driver_t *wifi_drivers[] = {
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
    &wifi_connmanctl,
 #endif
    &wifi_null,
@@ -28221,6 +28221,15 @@ static bool rarch_write_debug_info(void)
    {
       frontend->get_lakka_version(str, sizeof(str));
       filestream_printf(file, "Lakka Version: %s\n", str);
+      str[0] = '\0';
+   }
+#endif
+
+#ifdef HAVE_NIRCADA
+   if (frontend->get_nircada_version)
+   {
+      frontend->get_nircada_version(str, sizeof(str));
+      filestream_printf(file, "NircadaOS Version: %s\n", str);
       str[0] = '\0';
    }
 #endif

@@ -182,7 +182,7 @@
 
 #define DEFAULT_USER_LANGUAGE 0
 
-#if (defined(_WIN32) && !defined(_XBOX)) || (defined(__linux) && !defined(ANDROID) && !defined(HAVE_LAKKA)) || (defined(__MACH__) && !defined(IOS)) || defined(EMSCRIPTEN)
+#if (defined(_WIN32) && !defined(_XBOX)) || (defined(__linux) && !defined(ANDROID) && !defined(HAVE_LAKKA) && !defined(HAVE_NIRCADA)) || (defined(__MACH__) && !defined(IOS)) || defined(EMSCRIPTEN)
 #define DEFAULT_MOUSE_ENABLE true
 #else
 #define DEFAULT_MOUSE_ENABLE false
@@ -533,10 +533,15 @@ static unsigned menu_font_color_red   = 255;
 static unsigned menu_font_color_green = 255;
 static unsigned menu_font_color_blue  = 255;
 static unsigned xmb_menu_layout       = 0;
+#if defined(HAVE_NIRCADA) 
+static unsigned xmb_icon_theme        = XMB_ICON_THEME_TOORONTO;
+static unsigned xmb_theme             = XMB_THEME_DARK;
+#else
 static unsigned xmb_icon_theme        = XMB_ICON_THEME_MONOCHROME;
 static unsigned xmb_theme             = XMB_THEME_ELECTRIC_BLUE;
+#endif
 
-#if defined(HAVE_LAKKA) || defined(__arm__) || defined(__PPC64__) || defined(__ppc64__) || defined(__powerpc64__) || defined(__powerpc__) || defined(__ppc__) || defined(__POWERPC__)
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA) || defined(__arm__) || defined(__PPC64__) || defined(__ppc64__) || defined(__powerpc64__) || defined(__powerpc__) || defined(__ppc__) || defined(__POWERPC__)
 #define DEFAULT_XMB_SHADOWS_ENABLE false
 #else
 #define DEFAULT_XMB_SHADOWS_ENABLE true
@@ -559,7 +564,7 @@ static float menu_header_opacity = 1.000;
 
 #define DEFAULT_SHOW_ADVANCED_SETTINGS false
 
-#define DEFAULT_RGUI_COLOR_THEME RGUI_THEME_CLASSIC_GREEN
+#define DEFAULT_RGUI_COLOR_THEME RGUI_THEME_CLASSIC_RED
 
 static bool rgui_inline_thumbnails = false;
 static bool rgui_swap_thumbnails = false;

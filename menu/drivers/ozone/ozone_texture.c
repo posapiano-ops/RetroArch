@@ -126,7 +126,7 @@ menu_texture_item ozone_entries_icon_get_texture(ozone_handle_t *ozone,
       case MENU_ENUM_LABEL_ONLINE_UPDATER:
       case MENU_ENUM_LABEL_UPDATER_SETTINGS:
             return ozone->icons_textures[OZONE_ENTRIES_ICONS_TEXTURE_UPDATER];
-      case MENU_ENUM_LABEL_UPDATE_LAKKA:
+      case MENU_ENUM_LABEL_UPDATE_NIRCADA:
             return ozone->icons_textures[OZONE_ENTRIES_ICONS_TEXTURE_MAIN_MENU];
       case MENU_ENUM_LABEL_UPDATE_CHEATS:
             return ozone->icons_textures[OZONE_ENTRIES_ICONS_TEXTURE_CHEAT_OPTIONS];
@@ -231,10 +231,10 @@ menu_texture_item ozone_entries_icon_get_texture(ozone_handle_t *ozone,
       case MENU_ENUM_LABEL_SHOW_WIMP:
       case MENU_ENUM_LABEL_USER_INTERFACE_SETTINGS:
             return ozone->icons_textures[OZONE_ENTRIES_ICONS_TEXTURE_UI];
-#ifdef HAVE_LAKKA_SWITCH
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_NIRCADA_SWITCH)
       case MENU_ENUM_LABEL_SWITCH_GPU_PROFILE:
 #endif
-#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX)
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX) || defined(HAVE_NIRCADA_SWITCH)
       case MENU_ENUM_LABEL_SWITCH_CPU_PROFILE:
             return ozone->icons_textures[OZONE_ENTRIES_ICONS_TEXTURE_POWER];
 #endif
@@ -386,7 +386,7 @@ menu_texture_item ozone_entries_icon_get_texture(ozone_handle_t *ozone,
          return ozone->icons_textures[OZONE_ENTRIES_ICONS_TEXTURE_PAUSE];
       case MENU_SETTING_GROUP:
          return ozone->icons_textures[OZONE_ENTRIES_ICONS_TEXTURE_SETTING];
-#ifdef HAVE_LAKKA_SWITCH
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_NIRCADA_SWITCH)
       case MENU_SET_SWITCH_BRIGHTNESS:
          return ozone->icons_textures[OZONE_ENTRIES_ICONS_TEXTURE_BRIGHTNESS];
 #endif
@@ -518,6 +518,8 @@ switch (id)
       case OZONE_ENTRIES_ICONS_TEXTURE_MAIN_MENU:
 #if defined(HAVE_LAKKA)
          return "lakka.png";
+#elif defined(HAVE_NIRCADA)
+         return "nircada.png";
 #else
          return "retroarch.png";
 #endif
@@ -684,7 +686,11 @@ switch (id)
       case OZONE_ENTRIES_ICONS_TEXTURE_PLAYLIST:
          return "menu_playlist.png";
       case OZONE_ENTRIES_ICONS_TEXTURE_QUICKMENU:
+      #if defined(HAVE_NIRCADA)
+          return "menu_quickmenu_n.png";
+      #else
          return "menu_quickmenu.png";
+      #endif
       case OZONE_ENTRIES_ICONS_TEXTURE_REWIND:
          return "menu_rewind.png";
       case OZONE_ENTRIES_ICONS_TEXTURE_OVERLAY:

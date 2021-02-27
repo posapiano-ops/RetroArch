@@ -370,7 +370,7 @@ MSG_HASH(
       MENU_ENUM_LABEL_VALUE_BLOCK_SRAM_OVERWRITE,
       "Não substituir o SaveRAM no carregamento do estado de gravação"
       )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
       MENU_ENUM_LABEL_VALUE_BLUETOOTH_ENABLE,
       "Ativar Bluetooth"
@@ -869,6 +869,10 @@ MSG_HASH(MENU_ENUM_LABEL_VALUE_JOYPAD_DRIVER,
 MSG_HASH(MENU_ENUM_LABEL_VALUE_LAKKA_SERVICES,
       "Serviços")
 #endif
+#ifdef HAVE_NIRCADA
+MSG_HASH(MENU_ENUM_LABEL_VALUE_NIRCADA_SERVICES,
+      "Serviços")
+#endif
 MSG_HASH(MENU_ENUM_LABEL_VALUE_LANG_CHINESE_SIMPLIFIED,
       "Chinês (Simplificado)")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_LANG_CHINESE_TRADITIONAL,
@@ -1237,7 +1241,7 @@ MSG_HASH(MENU_ENUM_LABEL_VALUE_RDB_ENTRY_START_CONTENT,
       "Iniciar conteúdo")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_RDB_ENTRY_TGDB_RATING,
       "Classificação TGDB")
-#ifdef HAVE_LAKKA_SWITCH
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_NIRCADA_SWITCH)
 MSG_HASH(MENU_ENUM_LABEL_VALUE_REBOOT,
       "Reinicializar (RCM)")
 #else
@@ -1302,7 +1306,7 @@ MSG_HASH(MENU_ENUM_LABEL_VALUE_RIGHT_ANALOG,
       "Analógico direito")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_RUN,
       "Executar")
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(MENU_ENUM_LABEL_VALUE_SAMBA_ENABLE,
       "Ativar SAMBA")
 #endif
@@ -1374,7 +1378,7 @@ MSG_HASH(MENU_ENUM_LABEL_VALUE_SORT_SAVEFILES_ENABLE,
       "Ordenação de gravação em pastas")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_SORT_SAVESTATES_ENABLE,
       "Ordenação de gravação de estado em pastas")
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(MENU_ENUM_LABEL_VALUE_SSH_ENABLE,
       "Ativar SSH")
 #endif
@@ -1584,8 +1588,8 @@ MSG_HASH(MENU_ENUM_LABEL_VALUE_UPDATE_DATABASES,
       "Atualizar base de dados")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_UPDATE_GLSL_SHADERS,
       "Atualizar shaders de GLSL")
-MSG_HASH(MENU_ENUM_LABEL_VALUE_UPDATE_LAKKA,
-      "Atualizar Lakka")
+MSG_HASH(MENU_ENUM_LABEL_VALUE_UPDATE_NIRCADA,
+      "Atualizar NircadaOS")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_UPDATE_OVERLAYS,
       "Atualizar overlays")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_UPDATE_SLANG_SHADERS,
@@ -1740,6 +1744,8 @@ MSG_HASH(MENU_ENUM_LABEL_VALUE_XMB_ICON_THEME_CUSTOM,
       "Personalizar")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_XMB_ICON_THEME_FLATUI,
       "Cores planas")
+MSG_HASH(MENU_ENUM_LABEL_VALUE_XMB_ICON_THEME_TOORONTO,
+      "Tooronto")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_XMB_ICON_THEME_MONOCHROME,
       "Monocromático")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_XMB_ICON_THEME_MONOCHROME_INVERTED,
@@ -1844,7 +1850,7 @@ MSG_HASH(MENU_ENUM_SUBLABEL_ADD_CONTENT_LIST,
       "Procurar por conteúdo e adicionar à base de dados.")
 MSG_HASH(MENU_ENUM_SUBLABEL_AUDIO_SETTINGS,
       "Modificar as definições de saída de som.")
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(MENU_ENUM_SUBLABEL_BLUETOOTH_ENABLE,
       "Ativar/desativar Bluetooth.")
 #endif
@@ -1876,7 +1882,7 @@ MSG_HASH(MENU_ENUM_SUBLABEL_INFORMATION_LIST_LIST,
       "Mostrar informações do núcleo, rede e sistema.")
 MSG_HASH(MENU_ENUM_SUBLABEL_ONLINE_UPDATER,
       "Transferir complementos, componentes e conteúdos para o RetroArch.")
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(MENU_ENUM_SUBLABEL_SAMBA_ENABLE,
       "Ativar/desativar partilha de pastas na rede.")
 MSG_HASH(MENU_ENUM_SUBLABEL_SERVICES_SETTINGS,
@@ -1884,7 +1890,7 @@ MSG_HASH(MENU_ENUM_SUBLABEL_SERVICES_SETTINGS,
 #endif
 MSG_HASH(MENU_ENUM_SUBLABEL_SHOW_HIDDEN_FILES,
       "Mostrar ficheiros/pastas escondidos no explorador de ficheiros.")
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(MENU_ENUM_SUBLABEL_SSH_ENABLE,
       "Ativar/desativar acesso remoto pela linha de comandos.")
 #endif
@@ -3840,7 +3846,7 @@ MSG_HASH(MENU_ENUM_SUBLABEL_MENU_WIDGETS_ENABLE,
       "Use modern decorated animations, notifications, indicators and controls instead of the old text only system.")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_DELETE_PLAYLIST,
       "Apagar a lista de reprodução")
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(MENU_ENUM_LABEL_VALUE_LOCALAP_ENABLE,
       "Wi-Fi Access Point")
 MSG_HASH(MENU_ENUM_SUBLABEL_LOCALAP_ENABLE,

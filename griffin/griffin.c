@@ -1122,7 +1122,7 @@ RETROARCH
 /*============================================================
 WIFI
 ============================================================ */
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 #include "../wifi/drivers/connmanctl.c"
 #endif
 

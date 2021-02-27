@@ -378,7 +378,7 @@ MSG_HASH(
       MENU_ENUM_LABEL_VALUE_BLOCK_SRAM_OVERWRITE,
       "Не перезаписывать SaveRAM при загрузке сохранений"
       )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
       MENU_ENUM_LABEL_VALUE_BLUETOOTH_ENABLE,
       "Включить Bluetooth"
@@ -861,6 +861,10 @@ MSG_HASH(MENU_ENUM_LABEL_VALUE_JOYPAD_DRIVER,
 MSG_HASH(MENU_ENUM_LABEL_VALUE_LAKKA_SERVICES,
       "Сервисы")
 #endif
+#ifdef HAVE_NIRCADA
+MSG_HASH(MENU_ENUM_LABEL_VALUE_NIRCADA_SERVICES,
+      "Сервисы")
+#endif
 MSG_HASH(MENU_ENUM_LABEL_VALUE_LANG_CHINESE_SIMPLIFIED,
       "Китайский (Простой)")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_LANG_CHINESE_TRADITIONAL,
@@ -1195,7 +1199,7 @@ MSG_HASH(MENU_ENUM_LABEL_VALUE_RDB_ENTRY_START_CONTENT,
       "Запустить игру")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_RDB_ENTRY_TGDB_RATING,
       "Рейтинг TGDB")
-#ifdef HAVE_LAKKA_SWITCH
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(MENU_ENUM_LABEL_VALUE_REBOOT,
       "Перезагрузка (RCM)")
 #else
@@ -1262,7 +1266,7 @@ MSG_HASH(MENU_ENUM_LABEL_VALUE_RUN,
       "Запустить")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_RUN_MUSIC,
       "Запустить")
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(MENU_ENUM_LABEL_VALUE_SAMBA_ENABLE,
       "Включить SAMBA")
 #endif
@@ -1334,7 +1338,7 @@ MSG_HASH(MENU_ENUM_LABEL_VALUE_SORT_SAVEFILES_ENABLE,
       "Сохранить сортировку в папках")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_SORT_SAVESTATES_ENABLE,
       "Сортировать сохранения в папках")
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(MENU_ENUM_LABEL_VALUE_SSH_ENABLE,
       "SSH включён")
 #endif
@@ -1416,8 +1420,8 @@ MSG_HASH(MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_JACK_SUPPORT,
       "Поддержка JACK")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_KMS_SUPPORT,
       "поддержка KMS/EGL")
-MSG_HASH(MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_LAKKA_VERSION,
-      "Версия Lakka")
+MSG_HASH(MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_NIRCADA_VERSION,
+      "Версия NircadaOS")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_LIBRETRODB_SUPPORT,
       "Поддержка LibretroDB")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_LIBUSB_SUPPORT,
@@ -1548,8 +1552,8 @@ MSG_HASH(MENU_ENUM_LABEL_VALUE_UPDATE_DATABASES,
       "Обновить базы данных")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_UPDATE_GLSL_SHADERS,
       "Обновить GLSL шейдеры")
-MSG_HASH(MENU_ENUM_LABEL_VALUE_UPDATE_LAKKA,
-      "Обновить Lakka")
+MSG_HASH(MENU_ENUM_LABEL_VALUE_UPDATE_NIRCADA,
+      "Обновить NircadaOS")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_UPDATE_OVERLAYS,
       "Обновить оверлеи")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_UPDATE_SLANG_SHADERS,
@@ -1800,7 +1804,7 @@ MSG_HASH(MENU_ENUM_SUBLABEL_ADD_CONTENT_LIST,
       "Сканировать содержимое и добавить в базу данных.")
 MSG_HASH(MENU_ENUM_SUBLABEL_AUDIO_SETTINGS,
       "Настройка параметров аудиовыхода.")
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(MENU_ENUM_SUBLABEL_BLUETOOTH_ENABLE,
       "Включить или отключить Bluetooth.")
 #endif
@@ -1832,7 +1836,7 @@ MSG_HASH(MENU_ENUM_SUBLABEL_INFORMATION_LIST_LIST,
       "Показать информацию о ядре, сети и системе.")
 MSG_HASH(MENU_ENUM_SUBLABEL_ONLINE_UPDATER,
       "Загрузите надстройки, компоненты и содержимое для RetroArch.")
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(MENU_ENUM_SUBLABEL_SAMBA_ENABLE,
       "Включить или отключить сетевой доступ к папкам.")
 MSG_HASH(MENU_ENUM_SUBLABEL_SERVICES_SETTINGS,
@@ -1840,7 +1844,7 @@ MSG_HASH(MENU_ENUM_SUBLABEL_SERVICES_SETTINGS,
 #endif
 MSG_HASH(MENU_ENUM_SUBLABEL_SHOW_HIDDEN_FILES,
       "Показывать скрытые файлы/каталоги внутри файлового менеджера.")
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(MENU_ENUM_SUBLABEL_SSH_ENABLE,
       "Включить или отключить удаленный доступ к командной строке.")
 #endif

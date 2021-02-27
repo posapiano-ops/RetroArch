@@ -6,7 +6,7 @@
 #pragma warning(disable:4566)
 #endif
 
-#ifdef HAVE_LAKKA_SWITCH
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_NIRCADA_SWITCH)
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_SWITCH_GPU_PROFILE,
     "GPU Hız aşırtma"
@@ -24,7 +24,7 @@ MSG_HASH(
     "Switch'in ekran parlaklığını arttırın veya azaltın"
     )
 #endif
-#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX)
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX) || defined(HAVE_NIRCADA_SWITCH)
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_SWITCH_CPU_PROFILE,
     "İşlemci Hızaşırtma"
@@ -473,7 +473,7 @@ MSG_HASH(
     MENU_ENUM_LABEL_VALUE_BLOCK_SRAM_OVERWRITE,
     "Savestate'i yüklerken SaveRAM'in üzerine yazma"
     )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_BLUETOOTH_ENABLE,
     "Bluetooth"
@@ -1339,7 +1339,7 @@ MSG_HASH(
     MENU_ENUM_LABEL_VALUE_INPUT_META_PAUSE_TOGGLE,
     "Pause açma-kapama"
     )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_INPUT_META_QUIT_KEY,
     "RetroArch'ı yeniden başlat"
@@ -1508,6 +1508,12 @@ MSG_HASH(
 #ifdef HAVE_LAKKA
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_LAKKA_SERVICES,
+    "Servisler"
+    )
+#endif
+#ifdef HAVE_NIRCADA
+MSG_HASH(
+    MENU_ENUM_LABEL_VALUE_NIRCADA_SERVICES,
     "Servisler"
     )
 #endif
@@ -2241,7 +2247,7 @@ MSG_HASH(
     MENU_ENUM_LABEL_VALUE_MIDI_SETTINGS,
     "MIDI"
     )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_QUIT_RETROARCH,
     "RetroArch'ı Yeniden Başlat"
@@ -2368,7 +2374,7 @@ MSG_HASH(
     MENU_ENUM_LABEL_VALUE_RDB_ENTRY_TGDB_RATING,
     "TGDB Değerlendirmesi"
     )
-#ifdef HAVE_LAKKA_SWITCH
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_REBOOT,
     "RCM'ye yeniden başlat"
@@ -2595,7 +2601,7 @@ MSG_HASH(
     MENU_ENUM_LABEL_VALUE_RUN_MUSIC,
     "Başlat"
     )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_SAMBA_ENABLE,
     "SAMBA"
@@ -2773,7 +2779,7 @@ MSG_HASH(
     MENU_ENUM_LABEL_VALUE_SCREENSHOTS_IN_CONTENT_DIR_ENABLE,
     "Ekran görüntülerini içerik dizinine yaz"
     )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_SSH_ENABLE,
     "SSH"
@@ -2936,8 +2942,8 @@ MSG_HASH(
     "KMS/EGL Desteği"
     )
 MSG_HASH(
-    MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_LAKKA_VERSION,
-    "Lakka Versiyonu"
+    MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_NIRCADA_VERSION,
+    "NircadaOS Versiyonu"
     )
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_LIBRETRODB_SUPPORT,
@@ -3572,7 +3578,7 @@ MSG_HASH(
     "GLSL Gölgelendiricileri Güncelle"
     )
 MSG_HASH(
-    MENU_ENUM_LABEL_VALUE_UPDATE_LAKKA,
+    MENU_ENUM_LABEL_VALUE_UPDATE_NIRCADA,
     "Lakka'yı Güncelle"
     )
 MSG_HASH(
@@ -3930,6 +3936,10 @@ MSG_HASH(
     "Düz Kullanıcı Arayüzü"
     )
 MSG_HASH(
+    MENU_ENUM_LABEL_VALUE_XMB_ICON_THEME_TOORONTO,
+    "Tooronto"
+    )
+MSG_HASH(
     MENU_ENUM_LABEL_VALUE_XMB_ICON_THEME_MONOCHROME,
     "Monokrom"
     )
@@ -4189,7 +4199,7 @@ MSG_HASH(
     MENU_ENUM_SUBLABEL_AUDIO_SETTINGS,
     "Ses çıkışı ayarlarını değiştirin."
     )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
     MENU_ENUM_SUBLABEL_BLUETOOTH_ENABLE,
     "Bluetooth durumunu belirler."
@@ -4263,7 +4273,7 @@ MSG_HASH(
     MENU_ENUM_SUBLABEL_ONLINE_UPDATER,
     "RetroArch için eklentiler, bileşenler ve içerikler indirin."
     )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
     MENU_ENUM_SUBLABEL_SAMBA_ENABLE,
     "Ağ klasörlerini SMB protokolü ile paylaşın."
@@ -4277,7 +4287,7 @@ MSG_HASH(
     MENU_ENUM_SUBLABEL_SHOW_HIDDEN_FILES,
     "Dosya tarayıcısının içindeki gizli dosyaları/dizinleri göster."
     )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
     MENU_ENUM_SUBLABEL_SSH_ENABLE,
     "Uzaktan komut satırına erişmek için SSH kullanın."
@@ -5525,7 +5535,7 @@ MSG_HASH(
     MENU_ENUM_SUBLABEL_SYSTEM_INFORMATION,
     "Aygıta özgü bilgileri gösterir."
     )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
     MENU_ENUM_SUBLABEL_QUIT_RETROARCH,
     "Programı yeniden başlat."
@@ -6741,7 +6751,7 @@ MSG_HASH(
     MENU_ENUM_SUBLABEL_MENU_SHOW_HELP,
     "'Yardım' seçeneğini göster/gizle."
     )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
     MENU_ENUM_LABEL_VALUE_MENU_SHOW_QUIT_RETROARCH,
     "RetroArch'ı Yeniden Başlat'ı göster"
@@ -9300,7 +9310,7 @@ MSG_HASH(MENU_ENUM_SUBLABEL_MENU_WIDGETS_ENABLE,
       "Yalnızca eski metin sistemi yerine modern dekore edilmiş animasyonları, bildirimleri, göstergeleri ve kontrolleri kullanın.")
 MSG_HASH(MENU_ENUM_LABEL_VALUE_DELETE_PLAYLIST,
       "Parça listesini sil")
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(MENU_ENUM_LABEL_VALUE_LOCALAP_ENABLE,
       "Wi-Fi Erişim Noktası")
 MSG_HASH(MENU_ENUM_SUBLABEL_LOCALAP_ENABLE,

@@ -23,6 +23,7 @@
 #include "../wifi_driver.h"
 #include "../../retroarch.h"
 #include "../../lakka.h"
+#include "../../nircada.h"
 #ifdef HAVE_MENU_WIDGETS
 #include "../../menu/widgets/menu_widgets.h"
 #endif
@@ -289,7 +290,7 @@ static bool connmanctl_connect_ssid(unsigned i, const char* passphrase)
 
    string_list_free(list);
 
-   strlcat(settings_dir, LAKKA_CONNMAN_DIR, sizeof(settings_dir));
+   strlcat(settings_dir, NIRCADA_CONNMAN_DIR, sizeof(settings_dir));
    strlcat(settings_dir, service, sizeof(settings_dir));
 
    path_mkdir(settings_dir);
@@ -403,7 +404,7 @@ static void connmanctl_get_connected_servicename(char* servicename, size_t buffe
                basename $serv ; \
             fi ; \
          done",
-         LAKKA_CONNMAN_DIR);
+         NIRCADA_CONNMAN_DIR);
 
    command_file = popen(command, "r");
 
@@ -514,7 +515,7 @@ static void connmanctl_tether_start_stop(bool start, char* configfile)
          RARCH_LOG("[CONNMANCTL] Tether start stop: creating new config \"%s\"\n",
                configfile);
 
-         snprintf(apname, sizeof(apname), "LakkaAccessPoint");
+         snprintf(apname, sizeof(apname), "NircadaAccessPoint");
          snprintf(passkey, sizeof(passkey), "RetroArch");
 
          fprintf(command_file, "APNAME=%s\nPASSWORD=%s", apname, passkey);

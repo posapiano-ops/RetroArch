@@ -382,6 +382,9 @@ default_title_macro(action_get_netplay_lan_scan_settings_list,  MENU_ENUM_LABEL_
 #ifdef HAVE_LAKKA
 default_title_macro(action_get_lakka_services_list,             MENU_ENUM_LABEL_VALUE_LAKKA_SERVICES)
 #endif
+#ifdef HAVE_NIRCADA
+default_title_macro(action_get_nircada_services_list,             MENU_ENUM_LABEL_VALUE_NIRCADA_SERVICES)
+#endif
 default_title_macro(action_get_user_settings_list,              MENU_ENUM_LABEL_VALUE_USER_SETTINGS)
 default_title_macro(action_get_directory_settings_list,         MENU_ENUM_LABEL_VALUE_DIRECTORY_SETTINGS)
 default_title_macro(action_get_privacy_settings_list,           MENU_ENUM_LABEL_VALUE_PRIVACY_SETTINGS)
@@ -478,11 +481,11 @@ default_title_copy_macro(action_get_title_video_shader_preset_save,MENU_ENUM_LAB
 default_title_copy_macro(action_get_title_video_shader_preset_remove,MENU_ENUM_LABEL_VALUE_VIDEO_SHADER_PRESET_REMOVE)
 default_title_copy_macro(action_get_title_video_shader_preset_save_list,MENU_ENUM_LABEL_VALUE_VIDEO_SHADER_PRESET_SAVE)
 
-#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX)
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX) || defined(HAVE_NIRCADA_SWITCH)
 default_title_macro(action_get_title_switch_cpu_profile,          MENU_ENUM_LABEL_VALUE_SWITCH_CPU_PROFILE)
 #endif
 
-#ifdef HAVE_LAKKA_SWITCH
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_NIRCADA_SWITCH)
 default_title_macro(action_get_title_switch_gpu_profile,          MENU_ENUM_LABEL_VALUE_SWITCH_GPU_PROFILE)
 default_title_macro(action_get_title_switch_backlight_control,    MENU_ENUM_LABEL_VALUE_SWITCH_BACKLIGHT_CONTROL)
 #endif
@@ -682,6 +685,9 @@ static int menu_cbs_init_bind_title_compare_label(menu_file_list_cbs_t *cbs,
       {MENU_ENUM_LABEL_DEFERRED_NETPLAY_LAN_SCAN_SETTINGS_LIST,       action_get_netplay_lan_scan_settings_list},
 #ifdef HAVE_LAKKA
       {MENU_ENUM_LABEL_DEFERRED_LAKKA_SERVICES_LIST,                  action_get_lakka_services_list},
+#endif
+#ifdef HAVE_NIRCADA
+      {MENU_ENUM_LABEL_DEFERRED_NIRCADA_SERVICES_LIST,                  action_get_nircada_services_list},
 #endif
       {MENU_ENUM_LABEL_DEFERRED_USER_SETTINGS_LIST,                   action_get_user_settings_list},
       {MENU_ENUM_LABEL_DEFERRED_DIRECTORY_SETTINGS_LIST,              action_get_directory_settings_list},
@@ -1079,12 +1085,12 @@ static int menu_cbs_init_bind_title_compare_label(menu_file_list_cbs_t *cbs,
          case MENU_ENUM_LABEL_LIBRETRO_INFO_PATH:
             BIND_ACTION_GET_TITLE(cbs, action_get_title_core_info_directory);
             break;
-#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX)
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX) || defined(HAVE_NIRCADA_SWITCH)
          case MENU_ENUM_LABEL_SWITCH_CPU_PROFILE:
             BIND_ACTION_GET_TITLE(cbs, action_get_title_switch_cpu_profile);
             break;
 #endif
-#ifdef HAVE_LAKKA_SWITCH
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_NIRCADA_SWITCH)
          case MENU_ENUM_LABEL_SWITCH_GPU_PROFILE:
             BIND_ACTION_GET_TITLE(cbs, action_get_title_switch_gpu_profile);
             break;
@@ -1399,12 +1405,12 @@ static int menu_cbs_init_bind_title_compare_label(menu_file_list_cbs_t *cbs,
          case MENU_LABEL_LIBRETRO_INFO_PATH:
             BIND_ACTION_GET_TITLE(cbs, action_get_title_core_info_directory);
             break;
-#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX)
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX) || defined(HAVE_NIRCADA_SWITCH)
          case MENU_ENUM_LABEL_SWITCH_CPU_PROFILE:
             BIND_ACTION_GET_TITLE(cbs, action_get_title_switch_cpu_profile);
             break;
 #endif
-#ifdef HAVE_LAKKA_SWITCH
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_NIRCADA_SWITCH)
          case MENU_ENUM_LABEL_SWITCH_GPU_PROFILE:
             BIND_ACTION_GET_TITLE(cbs, action_get_title_switch_gpu_profile);
             break;

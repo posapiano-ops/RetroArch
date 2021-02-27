@@ -63,6 +63,9 @@ static frontend_ctx_driver_t frontend_ctx_null = {
 #ifdef HAVE_LAKKA
    NULL,                         /* get_lakka_version */
 #endif
+#ifdef HAVE_NIRCADA
+   NULL,                         /* get_nircada_version */
+#endif
    NULL,                         /* watch_path_for_changes */
    NULL,                         /* check_for_path_changes */
    NULL,                         /* set_sustained_performance_mode */

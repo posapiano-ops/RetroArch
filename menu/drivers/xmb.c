@@ -481,6 +481,8 @@ const char* xmb_theme_ident(void)
    {
       case XMB_ICON_THEME_FLATUI:
          return "flatui";
+      case XMB_ICON_THEME_TOORONTO:
+         return "tooronto";
       case XMB_ICON_THEME_RETROACTIVE:
          return "retroactive";
       case XMB_ICON_THEME_RETROSYSTEM:
@@ -2415,7 +2417,7 @@ static uintptr_t xmb_icon_get_id(xmb_handle_t *xmb,
       case MENU_ENUM_LABEL_ONLINE_UPDATER:
       case MENU_ENUM_LABEL_UPDATER_SETTINGS:
          return xmb->textures.list[XMB_TEXTURE_UPDATER];
-      case MENU_ENUM_LABEL_UPDATE_LAKKA:
+      case MENU_ENUM_LABEL_UPDATE_NIRCADA:
          return xmb->textures.list[XMB_TEXTURE_MAIN_MENU];
       case MENU_ENUM_LABEL_UPDATE_CHEATS:
          return xmb->textures.list[XMB_TEXTURE_CHEAT_OPTIONS];
@@ -2519,10 +2521,10 @@ static uintptr_t xmb_icon_get_id(xmb_handle_t *xmb,
       case MENU_ENUM_LABEL_SHOW_WIMP:
       case MENU_ENUM_LABEL_USER_INTERFACE_SETTINGS:
          return xmb->textures.list[XMB_TEXTURE_UI];
-#ifdef HAVE_LAKKA_SWITCH
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_NIRCADA_SWITCH)
       case MENU_ENUM_LABEL_SWITCH_GPU_PROFILE:
 #endif
-#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX)
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX) || defined(HAVE_NIRCADA_SWITCH)
       case MENU_ENUM_LABEL_SWITCH_CPU_PROFILE:
          return xmb->textures.list[XMB_TEXTURE_POWER];
 #endif
@@ -2665,7 +2667,7 @@ static uintptr_t xmb_icon_get_id(xmb_handle_t *xmb,
          return xmb->textures.list[XMB_TEXTURE_RELOAD];
       case MENU_SETTING_ACTION_PAUSE_ACHIEVEMENTS:
          return xmb->textures.list[XMB_TEXTURE_PAUSE];
-#ifdef HAVE_LAKKA_SWITCH
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_NIRCADA_SWITCH)
       case MENU_SET_SWITCH_BRIGHTNESS:
          return xmb->textures.list[XMB_TEXTURE_BRIGHTNESS];
 #endif
@@ -5220,6 +5222,8 @@ static const char *xmb_texture_path(unsigned id)
       case XMB_TEXTURE_MAIN_MENU:
 #if defined(HAVE_LAKKA)
          return "lakka.png";
+#elif defined(HAVE_NIRCADA)
+         return "nircada.png";
 #else
          return "retroarch.png";
 #endif
@@ -5386,7 +5390,11 @@ static const char *xmb_texture_path(unsigned id)
       case XMB_TEXTURE_DISC:
          return "disc.png";
       case XMB_TEXTURE_QUICKMENU:
+      #if defined(HAVE_NIRCADA)
+          return "menu_quickmenu_n.png";
+      #else
          return "menu_quickmenu.png";
+      #endif
       case XMB_TEXTURE_REWIND:
          return "menu_rewind.png";
       case XMB_TEXTURE_OVERLAY:
@@ -6253,12 +6261,12 @@ static int xmb_list_push(void *data, void *userdata,
                menu_displaylist_setting(&entry);
             }
 
-#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX)
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX) || defined(HAVE_NIRCADA_SWITCH)
             entry.enum_idx      = MENU_ENUM_LABEL_SWITCH_CPU_PROFILE;
             menu_displaylist_setting(&entry);
 #endif
 
-#ifdef HAVE_LAKKA_SWITCH
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_NIRCADA_SWITCH)
             entry.enum_idx      = MENU_ENUM_LABEL_SWITCH_GPU_PROFILE;
             menu_displaylist_setting(&entry);
 

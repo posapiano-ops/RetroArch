@@ -184,7 +184,7 @@ generic_deferred_push(deferred_push_wifi_settings_list,             DISPLAYLIST_
 generic_deferred_push(deferred_push_network_settings_list,          DISPLAYLIST_NETWORK_SETTINGS_LIST)
 generic_deferred_push(deferred_push_subsystem_settings_list,          DISPLAYLIST_SUBSYSTEM_SETTINGS_LIST)
 generic_deferred_push(deferred_push_network_hosting_settings_list,          DISPLAYLIST_NETWORK_HOSTING_SETTINGS_LIST)
-generic_deferred_push(deferred_push_lakka_services_list,            DISPLAYLIST_LAKKA_SERVICES_LIST)
+generic_deferred_push(deferred_push_nircada_services_list,            DISPLAYLIST_NIRCADA_SERVICES_LIST)
 generic_deferred_push(deferred_push_user_settings_list,             DISPLAYLIST_USER_SETTINGS_LIST)
 generic_deferred_push(deferred_push_directory_settings_list,        DISPLAYLIST_DIRECTORY_SETTINGS_LIST)
 generic_deferred_push(deferred_push_privacy_settings_list,          DISPLAYLIST_PRIVACY_SETTINGS_LIST)
@@ -223,14 +223,14 @@ generic_deferred_push(deferred_push_core_updater_list,              DISPLAYLIST_
 generic_deferred_push(deferred_push_core_content_list,              DISPLAYLIST_CORE_CONTENT)
 generic_deferred_push(deferred_push_core_content_dirs_list,         DISPLAYLIST_CORE_CONTENT_DIRS)
 generic_deferred_push(deferred_push_core_content_dirs_subdir_list,  DISPLAYLIST_CORE_CONTENT_DIRS_SUBDIR)
-generic_deferred_push(deferred_push_lakka_list,                     DISPLAYLIST_LAKKA)
+generic_deferred_push(deferred_push_nircada_list,                     DISPLAYLIST_NIRCADA)
 #endif
 
-#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX)
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX) || defined(HAVE_NIRCADA_SWITCH)
 generic_deferred_push(deferred_push_switch_cpu_profile,             DISPLAYLIST_SWITCH_CPU_PROFILE)
 #endif
 
-#ifdef HAVE_LAKKA_SWITCH
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_NIRCADA_SWITCH)
 generic_deferred_push(deferred_push_switch_gpu_profile,             DISPLAYLIST_SWITCH_GPU_PROFILE)
 generic_deferred_push(deferred_push_switch_backlight_control,       DISPLAYLIST_SWITCH_BACKLIGHT_CONTROL)
 #endif
@@ -724,7 +724,7 @@ static int menu_cbs_init_bind_deferred_push_compare_label(
       {MENU_ENUM_LABEL_DEFERRED_SUBSYSTEM_SETTINGS_LIST, deferred_push_subsystem_settings_list},
       {MENU_ENUM_LABEL_DEFERRED_NETWORK_HOSTING_SETTINGS_LIST, deferred_push_network_hosting_settings_list},
       {MENU_ENUM_LABEL_DEFERRED_WIFI_SETTINGS_LIST, deferred_push_wifi_settings_list},
-      {MENU_ENUM_LABEL_DEFERRED_LAKKA_SERVICES_LIST, deferred_push_lakka_services_list},
+      {MENU_ENUM_LABEL_DEFERRED_NIRCADA_SERVICES_LIST, deferred_push_nircada_services_list},
       {MENU_ENUM_LABEL_DEFERRED_USER_SETTINGS_LIST, deferred_push_user_settings_list},
       {MENU_ENUM_LABEL_DEFERRED_DIRECTORY_SETTINGS_LIST, deferred_push_directory_settings_list},
       {MENU_ENUM_LABEL_DEFERRED_PRIVACY_SETTINGS_LIST, deferred_push_privacy_settings_list},
@@ -766,11 +766,11 @@ static int menu_cbs_init_bind_deferred_push_compare_label(
       {MENU_ENUM_LABEL_DEFERRED_AUDIO_RESAMPLER_SETTINGS_LIST, deferred_push_audio_resampler_settings_list},
       {MENU_ENUM_LABEL_DEFERRED_AUDIO_MIXER_SETTINGS_LIST, deferred_push_audio_mixer_settings_list},
       {MENU_ENUM_LABEL_DEFERRED_LATENCY_SETTINGS_LIST, deferred_push_latency_settings_list},
-#ifdef HAVE_LAKKA_SWITCH
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_NIRCADA_SWITCH)
       {MENU_ENUM_LABEL_SWITCH_GPU_PROFILE, deferred_push_switch_gpu_profile},
       {MENU_ENUM_LABEL_SWITCH_BACKLIGHT_CONTROL, deferred_push_switch_backlight_control},
 #endif
-#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX)
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX) || defined(HAVE_NIRCADA_SWITCH)
       {MENU_ENUM_LABEL_SWITCH_CPU_PROFILE, deferred_push_switch_cpu_profile},
 #endif
       {MENU_ENUM_LABEL_DEFERRED_REMAPPINGS_PORT_LIST, deferred_push_remappings_port },
@@ -888,9 +888,9 @@ static int menu_cbs_init_bind_deferred_push_compare_label(
             BIND_ACTION_DEFERRED_PUSH(cbs, deferred_push_pl_thumbnails_updater_list);
 #endif
             break;
-         case MENU_ENUM_LABEL_DEFERRED_LAKKA_LIST:
+         case MENU_ENUM_LABEL_DEFERRED_NIRCADA_LIST:
 #ifdef HAVE_NETWORKING
-            BIND_ACTION_DEFERRED_PUSH(cbs, deferred_push_lakka_list);
+            BIND_ACTION_DEFERRED_PUSH(cbs, deferred_push_nircada_list);
 #endif
             break;
          case MENU_ENUM_LABEL_LOAD_CONTENT_HISTORY:
@@ -1217,9 +1217,9 @@ static int menu_cbs_init_bind_deferred_push_compare_label(
          case MENU_LABEL_DEFERRED_ARCHIVE_OPEN:
             BIND_ACTION_DEFERRED_PUSH(cbs, deferred_archive_open);
             break;
-         case MENU_LABEL_DEFERRED_LAKKA_LIST:
+         case MENU_LABEL_DEFERRED_NIRCADA_LIST:
 #ifdef HAVE_NETWORKING
-            BIND_ACTION_DEFERRED_PUSH(cbs, deferred_push_lakka_list);
+            BIND_ACTION_DEFERRED_PUSH(cbs, deferred_push_nircada_list);
 #endif
             break;
          case MENU_LABEL_DATABASE_MANAGER_LIST:

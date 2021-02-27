@@ -46,6 +46,7 @@
 #include "retroarch.h"
 #include "verbosity.h"
 #include "lakka.h"
+#include "nircada.h"
 
 #include "tasks/task_content.h"
 #include "tasks/tasks_internal.h"
@@ -564,7 +565,7 @@ static enum camera_driver_enum CAMERA_DEFAULT_DRIVER = CAMERA_ANDROID;
 static enum camera_driver_enum CAMERA_DEFAULT_DRIVER = CAMERA_NULL;
 #endif
 
-#if defined(HAVE_LAKKA)
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 static enum wifi_driver_enum WIFI_DEFAULT_DRIVER = WIFI_CONNMANCTL;
 #else
 static enum wifi_driver_enum WIFI_DEFAULT_DRIVER = WIFI_NULL;
@@ -2144,6 +2145,13 @@ void config_set_defaults(void *data)
    settings->bools.localap_enable              = false;
 #endif
 
+#ifdef HAVE_NIRCADA
+   settings->bools.ssh_enable                  = filestream_exists(NIRCADA_SSH_PATH);
+   settings->bools.samba_enable                = filestream_exists(NIRCADA_SAMBA_PATH);
+   settings->bools.bluetooth_enable            = filestream_exists(NIRCADA_BLUETOOTH_PATH);
+   settings->bools.localap_enable              = false;
+#endif
+
 #ifdef HAVE_MENU
    if (first_initialized)
       settings->bools.menu_show_start_screen   = default_menu_show_start_screen;
@@ -3113,6 +3121,12 @@ static bool config_load_file(global_t *global,
    settings->bools.bluetooth_enable = filestream_exists(LAKKA_BLUETOOTH_PATH);
 #endif
 
+#ifdef HAVE_NIRCADA
+   settings->bools.ssh_enable       = filestream_exists(NIRCADA_SSH_PATH);
+   settings->bools.samba_enable     = filestream_exists(NIRCADA_SAMBA_PATH);
+   settings->bools.bluetooth_enable = filestream_exists(NIRCADA_BLUETOOTH_PATH);
+#endif
+
    if (!retroarch_override_setting_is_set(RARCH_OVERRIDE_SETTING_SAVE_PATH, NULL) &&
          config_get_path(conf, "savefile_directory", tmp_str, path_size))
    {
@@ -3935,6 +3949,27 @@ bool config_save_file(const char *path)
                RETRO_VFS_FILE_ACCESS_HINT_NONE));
    else
       filestream_delete(LAKKA_BLUETOOTH_PATH);
+#endif
+
+#ifdef HAVE_NIRCADA
+   if (settings->bools.ssh_enable)
+      filestream_close(filestream_open(NIRCADA_SSH_PATH,
+               RETRO_VFS_FILE_ACCESS_WRITE,
+               RETRO_VFS_FILE_ACCESS_HINT_NONE));
+   else
+      filestream_delete(NIRCADA_SSH_PATH);
+   if (settings->bools.samba_enable)
+      filestream_close(filestream_open(NIRCADA_SAMBA_PATH,
+               RETRO_VFS_FILE_ACCESS_WRITE,
+               RETRO_VFS_FILE_ACCESS_HINT_NONE));
+   else
+      filestream_delete(NIRCADA_SAMBA_PATH);
+   if (settings->bools.bluetooth_enable)
+      filestream_close(filestream_open(NIRCADA_BLUETOOTH_PATH,
+               RETRO_VFS_FILE_ACCESS_WRITE,
+               RETRO_VFS_FILE_ACCESS_HINT_NONE));
+   else
+      filestream_delete(NIRCADA_BLUETOOTH_PATH);
 #endif
 
    for (i = 0; i < MAX_USERS; i++)

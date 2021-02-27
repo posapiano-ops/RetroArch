@@ -164,6 +164,13 @@ const char *file_path_str(enum file_path_enum enum_idx)
          str = "http://le.builds.lakka.tv";
 #endif
          break;
+      case FILE_PATH_NIRCADA_URL:
+#ifdef HAVE_NIRCADA_NIGHTLY
+         str = "http://sources.bandanet.org/NircadaOS/Tooronto/.nightly";
+#else
+         str = "http://sources.bandanet.org/NircadaOS/Tooronto";
+#endif
+         break;
       case FILE_PATH_SHADERS_GLSL_ZIP:
          str = "shaders_glsl.zip";
          break;

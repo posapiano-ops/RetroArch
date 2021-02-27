@@ -369,6 +369,8 @@ const char* stripes_theme_ident(void)
    {
       case XMB_ICON_THEME_FLATUI:
          return "flatui";
+      case XMB_ICON_THEME_TOORONTO:
+         return "tooronto";
       case XMB_ICON_THEME_RETROACTIVE:
          return "retroactive";
       case XMB_ICON_THEME_RETROSYSTEM:
@@ -3481,6 +3483,8 @@ static const char *stripes_texture_path(unsigned id)
       case STRIPES_TEXTURE_MAIN_MENU:
 #if defined(HAVE_LAKKA)
          return "lakka.png";
+#elif defined(HAVE_NIRCADA)
+         return "nircada.png";
 #else
          return "retroarch.png";
 #endif

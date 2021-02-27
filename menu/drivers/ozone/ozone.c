@@ -897,12 +897,12 @@ static int ozone_list_push(void *data, void *userdata,
                menu_displaylist_setting(&entry);
             }
 
-#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX)
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX) || defined(HAVE_NIRCADA_SWITCH)
             entry.enum_idx      = MENU_ENUM_LABEL_SWITCH_CPU_PROFILE;
             menu_displaylist_setting(&entry);
 #endif
 
-#ifdef HAVE_LAKKA_SWITCH
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_NIRCADA_SWITCH)
             entry.enum_idx      = MENU_ENUM_LABEL_SWITCH_GPU_PROFILE;
             menu_displaylist_setting(&entry);
 

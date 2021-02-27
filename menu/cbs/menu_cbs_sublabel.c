@@ -196,7 +196,7 @@ default_sublabel_macro(action_bind_sublabel_latency_settings_list,         MENU_
 default_sublabel_macro(action_bind_sublabel_wifi_settings_list,            MENU_ENUM_SUBLABEL_WIFI_SETTINGS)
 default_sublabel_macro(action_bind_sublabel_netplay_lan_scan_settings_list,MENU_ENUM_SUBLABEL_NETPLAY_LAN_SCAN_SETTINGS)
 default_sublabel_macro(action_bind_sublabel_help_list,                     MENU_ENUM_SUBLABEL_HELP_LIST)
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 default_sublabel_macro(action_bind_sublabel_services_settings_list,        MENU_ENUM_SUBLABEL_SERVICES_SETTINGS)
 default_sublabel_macro(action_bind_sublabel_ssh_enable,                    MENU_ENUM_SUBLABEL_SSH_ENABLE)
 default_sublabel_macro(action_bind_sublabel_samba_enable,                  MENU_ENUM_SUBLABEL_SAMBA_ENABLE )
@@ -590,7 +590,7 @@ default_sublabel_macro(action_bind_sublabel_menu_show_information,              
 default_sublabel_macro(action_bind_sublabel_menu_show_configurations,              MENU_ENUM_SUBLABEL_MENU_SHOW_CONFIGURATIONS)
 default_sublabel_macro(action_bind_sublabel_menu_show_help,                        MENU_ENUM_SUBLABEL_MENU_SHOW_HELP)
 default_sublabel_macro(action_bind_sublabel_menu_show_quit_retroarch,              MENU_ENUM_SUBLABEL_MENU_SHOW_QUIT_RETROARCH)
-#ifndef HAVE_LAKKA
+#if !defined(HAVE_LAKKA) || !defined(HAVE_NIRCADA)
 default_sublabel_macro(action_bind_sublabel_menu_show_restart_retroarch,           MENU_ENUM_SUBLABEL_MENU_SHOW_RESTART_RETROARCH)
 #endif
 default_sublabel_macro(action_bind_sublabel_menu_show_reboot,                      MENU_ENUM_SUBLABEL_MENU_SHOW_REBOOT)
@@ -683,11 +683,11 @@ default_sublabel_macro(action_bind_sublabel_show_wimp,                          
 #endif
 default_sublabel_macro(action_bind_sublabel_discord_allow,                         MENU_ENUM_SUBLABEL_DISCORD_ALLOW)
 
-#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX)
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX) || defined(HAVE_NIRCADA_SWITCH)
 default_sublabel_macro(action_bind_sublabel_switch_cpu_profile,             MENU_ENUM_SUBLABEL_SWITCH_CPU_PROFILE)
 #endif
 
-#ifdef HAVE_LAKKA_SWITCH
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_NIRCADA_SWITCH)
 default_sublabel_macro(action_bind_sublabel_switch_gpu_profile,             MENU_ENUM_SUBLABEL_SWITCH_GPU_PROFILE)
 default_sublabel_macro(action_bind_sublabel_switch_backlight_control,       MENU_ENUM_SUBLABEL_SWITCH_BACKLIGHT_CONTROL)
 #endif
@@ -1695,7 +1695,7 @@ int menu_cbs_init_bind_sublabel(menu_file_list_cbs_t *cbs,
          case MENU_ENUM_LABEL_MENU_SHOW_QUIT_RETROARCH:
             BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_menu_show_quit_retroarch);
             break;
-#ifndef HAVE_LAKKA
+#if !defined(HAVE_LAKKA) || !defined(HAVE_NIRCADA)
          case MENU_ENUM_LABEL_MENU_SHOW_RESTART_RETROARCH:
             BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_menu_show_restart_retroarch);
             break;
@@ -2941,6 +2941,23 @@ int menu_cbs_init_bind_sublabel(menu_file_list_cbs_t *cbs,
             BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_localap_enable);
             break;
 #endif
+#ifdef HAVE_NIRCADA
+         case MENU_ENUM_LABEL_NIRCADA_SERVICES:
+            BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_services_settings_list);
+            break;
+         case MENU_ENUM_LABEL_SSH_ENABLE:
+            BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_ssh_enable);
+            break;
+         case MENU_ENUM_LABEL_SAMBA_ENABLE:
+            BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_samba_enable);
+            break;
+         case MENU_ENUM_LABEL_BLUETOOTH_ENABLE:
+            BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_bluetooth_enable);
+            break;
+         case MENU_ENUM_LABEL_LOCALAP_ENABLE:
+            BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_localap_enable);
+            break;
+#endif
          case MENU_ENUM_LABEL_USER_LANGUAGE:
             BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_user_language);
             break;
@@ -3005,12 +3022,12 @@ int menu_cbs_init_bind_sublabel(menu_file_list_cbs_t *cbs,
             BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_show_wimp);
             break;
 #endif
-#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX)
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX) || defined(HAVE_NIRCADA_SWITCH)
          case MENU_ENUM_LABEL_SWITCH_CPU_PROFILE:
             BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_switch_cpu_profile);
             break;
 #endif
-#ifdef HAVE_LAKKA_SWITCH
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_NIRCADA_SWITCH)
          case MENU_ENUM_LABEL_SWITCH_GPU_PROFILE:
             BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_switch_gpu_profile);
             break;

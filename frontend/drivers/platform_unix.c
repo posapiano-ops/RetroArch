@@ -1086,7 +1086,7 @@ static bool frontend_unix_powerstate_check_acpi_sysfs(
    {
       const char *node = retro_dirent_get_name(entry);
 
-#ifdef HAVE_LAKKA_SWITCH
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_NIRCADA_SWITCH)
       if (node && strstr(node, "max170xx_battery"))
 #else
       if (node && strstr(node, "BAT"))
@@ -1260,6 +1260,26 @@ static void frontend_unix_get_os(char *s,
 
 #ifdef HAVE_LAKKA
 static void frontend_unix_get_lakka_version(char *s,
+      size_t len)
+{
+   char version[128];
+   size_t vlen;
+   FILE *command_file = popen("cat /etc/release", "r");
+
+   fgets(version, sizeof(version), command_file);
+   vlen = strlen(version);
+
+   if (vlen > 0 && version[vlen-1] == '\n')
+      version[--vlen] = '\0';
+
+   strlcpy(s, version, len);
+
+   pclose(command_file);
+}
+#endif
+
+#ifdef HAVE_NIRCADA
+static void frontend_unix_get_nircada_version(char *s,
       size_t len)
 {
    char version[128];
@@ -2471,6 +2491,9 @@ frontend_ctx_driver_t frontend_ctx_unix = {
    NULL,                         /* detach_console */
 #ifdef HAVE_LAKKA
    frontend_unix_get_lakka_version,    /* get_lakka_version */
+#endif
+#ifdef HAVE_NIRCADA
+   frontend_unix_get_nircada_version,    /* get_nircada_version */
 #endif
    frontend_unix_watch_path_for_changes,
    frontend_unix_check_for_path_changes,

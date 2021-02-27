@@ -6,7 +6,7 @@
 #pragma warning(disable:4566)
 #endif
 
-#ifdef HAVE_LAKKA_SWITCH
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_NIRCADA_SWITCH)
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_SWITCH_GPU_PROFILE,
    "GPUオーバークロック"
@@ -24,7 +24,7 @@ MSG_HASH(
    "画面の明るさを増減します。"
 )
 #endif
-#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX)
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_LIBNX) || defined(HAVE_NIRCADA_SWITCH)
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_SWITCH_CPU_PROFILE,
    "CPUオーバークロック"
@@ -482,7 +482,7 @@ MSG_HASH(
    MENU_ENUM_LABEL_VALUE_BLOCK_SRAM_OVERWRITE,
    "ステートロード時にセーブRAMを置き換えない"
 )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_BLUETOOTH_ENABLE,
    "Bluetoothを有効"
@@ -1352,7 +1352,7 @@ MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_META_PAUSE_TOGGLE,
    "一時停止"
 )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_META_QUIT_KEY,
    "RetroArchを終了"
@@ -1515,6 +1515,12 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_LAKKA_SERVICES,
    "Lakkaのサービス"
+)
+#endif
+#ifdef HAVE_NIRCADA
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_NIRCADA_SERVICES,
+   "NircadaOSのサービス"
 )
 #endif
 MSG_HASH(
@@ -2274,7 +2280,7 @@ MSG_HASH(
    MENU_ENUM_LABEL_VALUE_MIDI_SETTINGS,
    "MIDI"
 )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_QUIT_RETROARCH,
    "再起動"
@@ -2433,7 +2439,7 @@ MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CONTENT_INFO_LAST_PLAYED,
    "最終プレイ時刻"
 )
-#ifdef HAVE_LAKKA_SWITCH
+#if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_NIRCADA_SWITCH)
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_REBOOT,
    "再起動 (RCM)"
@@ -2637,7 +2643,7 @@ MSG_HASH(
    MENU_ENUM_LABEL_VALUE_RUN_MUSIC,
    "実行"
 )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_SAMBA_ENABLE,
    "SAMBAを有効"
@@ -2815,7 +2821,7 @@ MSG_HASH(
    MENU_ENUM_LABEL_VALUE_SCREENSHOTS_IN_CONTENT_DIR_ENABLE,
    "コンテンツフォルダにスクリーンショットを書き込む"
 )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_SSH_ENABLE,
    "SSHを有効"
@@ -2982,8 +2988,8 @@ MSG_HASH(
    "KMS/EGL対応"
 )
 MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_LAKKA_VERSION,
-   "Lakkaバージョン"
+   MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_NIRCADA_VERSION,
+   "NircadaOSバージョン"
 )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_LIBRETRODB_SUPPORT,
@@ -3645,8 +3651,8 @@ MSG_HASH(
    "GLSLシェーダをアップデート"
 )
 MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_UPDATE_LAKKA,
-   "Lakkaをアップデート"
+   MENU_ENUM_LABEL_VALUE_UPDATE_NIRCADA,
+   "NircadaOSをアップデート"
 )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_UPDATE_OVERLAYS,
@@ -4061,6 +4067,10 @@ MSG_HASH(
    "フラットUI"
 )
 MSG_HASH(
+    MENU_ENUM_LABEL_VALUE_XMB_ICON_THEME_TOORONTO,
+    "Tooronto"
+)
+MSG_HASH(
    MENU_ENUM_LABEL_VALUE_XMB_ICON_THEME_MONOCHROME,
    "モノクローム"
 )
@@ -4318,7 +4328,7 @@ MSG_HASH(
    MENU_ENUM_SUBLABEL_AUDIO_SETTINGS,
    "オーディオ出力の設定を変更します。"
 )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
    MENU_ENUM_SUBLABEL_BLUETOOTH_ENABLE,
    "Bluetoothを有効します。"
@@ -4392,7 +4402,7 @@ MSG_HASH(
    MENU_ENUM_SUBLABEL_ONLINE_UPDATER,
    "RetroArch用のアドオン, コンポーネント, コンテンツをダウンロードします。"
 )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
    MENU_ENUM_SUBLABEL_SAMBA_ENABLE,
    "フォルダのネットワーク共有を有効します。"
@@ -4406,7 +4416,7 @@ MSG_HASH(
    MENU_ENUM_SUBLABEL_SHOW_HIDDEN_FILES,
    "ファイルブラウザの中に隠しファイルとフォルダを表示します。"
 )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
    MENU_ENUM_SUBLABEL_SSH_ENABLE,
    "SSHでのアクセスを有効します。"
@@ -5656,7 +5666,7 @@ MSG_HASH(
    MENU_ENUM_SUBLABEL_SYSTEM_INFORMATION,
    "デバイス固有の情報を表示します。"
 )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
    MENU_ENUM_SUBLABEL_QUIT_RETROARCH,
    "RetroArchを終了します。"
@@ -6951,7 +6961,7 @@ MSG_HASH(
    MENU_ENUM_SUBLABEL_MENU_SHOW_HELP,
    "[ヘルプ]オプションを表示/非表示にします。"
 )
-#ifdef HAVE_LAKKA
+#if defined(HAVE_LAKKA) || defined(HAVE_NIRCADA)
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_MENU_SHOW_QUIT_RETROARCH,
    "[終了]を表示"
