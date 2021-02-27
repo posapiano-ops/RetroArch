@@ -3,3 +3,6 @@
 .vscode/settings.json
 .vscode/tasks.json
 tooronto.patch
+config.h
+config.log
+config.mk
