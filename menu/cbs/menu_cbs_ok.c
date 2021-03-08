@@ -3999,13 +3999,18 @@ static int generic_action_ok_network(const char *path,
 #endif
 #ifdef HAVE_NIRCADA
       case MENU_ENUM_LABEL_CB_NIRCADA_LIST:
-         /* TODO unhardcode this path */
+         /* TODO unhardcode this path 
          fill_pathname_join(url_path,
                file_path_str(FILE_PATH_NIRCADA_URL),
                nircada_get_project(), sizeof(url_path));
          fill_pathname_join(url_path, url_path,
                ".index",
                sizeof(url_path));
+         */
+         fill_pathname_join(url_path,
+               "http://sources.bandanet.org/NircadaOS/Tooronto",
+               nircada_get_project(),
+               ".index", sizeof(url_path));
          url_label = msg_hash_to_str(enum_idx);
          type_id2  = ACTION_OK_DL_NIRCADA_LIST;
          callback  = cb_net_generic;
@@ -4279,8 +4284,11 @@ static int action_ok_download_generic(const char *path,
                lakka_get_project(), sizeof(s));
 #endif
 #ifdef HAVE_NIRCADA
-         /* TODO unhardcode this path*/
+         /* TODO unhardcode this path
          fill_pathname_join(s, file_path_str(FILE_PATH_NIRCADA_URL),
+               nircada_get_project(), sizeof(s));
+         */
+         fill_pathname_join(s, "http://sources.bandanet.org/NircadaOS/Tooronto",
                nircada_get_project(), sizeof(s));
 #endif
          break;
