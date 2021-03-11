@@ -227,6 +227,10 @@ static enum msg_hash_enums action_ok_dl_to_enum(unsigned lbl)
          return MENU_ENUM_LABEL_DEFERRED_INPUT_HAPTIC_FEEDBACK_SETTINGS_LIST;
       case ACTION_OK_DL_LATENCY_SETTINGS_LIST:
          return MENU_ENUM_LABEL_DEFERRED_LATENCY_SETTINGS_LIST;
+#ifdef HAVE_NIRCADA
+      case ACTION_OK_DL_TIMEZONE_SETTINGS_LIST:
+         return MENU_ENUM_LABEL_DEFERRED_TIMEZONE_SETTINGS_LIST;
+#endif
       case ACTION_OK_DL_DRIVER_SETTINGS_LIST:
          return MENU_ENUM_LABEL_DEFERRED_DRIVER_SETTINGS_LIST;
       case ACTION_OK_DL_CORE_SETTINGS_LIST:
@@ -1111,6 +1115,9 @@ int generic_action_ok_displaylist_push(const char *path,
       case ACTION_OK_DL_INPUT_MENU_SETTINGS_LIST:
       case ACTION_OK_DL_INPUT_HAPTIC_FEEDBACK_SETTINGS_LIST:
       case ACTION_OK_DL_LATENCY_SETTINGS_LIST:
+#ifdef HAVE_NIRCADA
+      case ACTION_OK_DL_TIMEZONE_SETTINGS_LIST:
+#endif
       case ACTION_OK_DL_DRIVER_SETTINGS_LIST:
       case ACTION_OK_DL_CORE_SETTINGS_LIST:
       case ACTION_OK_DL_VIDEO_SETTINGS_LIST:
@@ -5030,6 +5037,9 @@ default_action_ok_func(action_ok_push_input_settings_list, ACTION_OK_DL_INPUT_SE
 default_action_ok_func(action_ok_push_input_menu_settings_list, ACTION_OK_DL_INPUT_MENU_SETTINGS_LIST)
 default_action_ok_func(action_ok_push_input_haptic_feedback_settings_list, ACTION_OK_DL_INPUT_HAPTIC_FEEDBACK_SETTINGS_LIST)
 default_action_ok_func(action_ok_push_latency_settings_list, ACTION_OK_DL_LATENCY_SETTINGS_LIST)
+#ifdef HAVE_NIRCADA
+default_action_ok_func(action_ok_push_timezone_settings_list, ACTION_OK_DL_TIMEZONE_SETTINGS_LIST)
+#endif
 default_action_ok_func(action_ok_push_recording_settings_list, ACTION_OK_DL_RECORDING_SETTINGS_LIST)
 default_action_ok_func(action_ok_push_playlist_settings_list, ACTION_OK_DL_PLAYLIST_SETTINGS_LIST)
 default_action_ok_func(action_ok_push_playlist_manager_list, ACTION_OK_DL_PLAYLIST_MANAGER_LIST)
@@ -6823,6 +6833,11 @@ static int menu_cbs_init_bind_ok_compare_label(menu_file_list_cbs_t *cbs,
          case MENU_ENUM_LABEL_LATENCY_SETTINGS:
             BIND_ACTION_OK(cbs, action_ok_push_latency_settings_list);
             break;
+#ifdef HAVE_NIRCADA
+         case MENU_ENUM_LABEL_TIMEZONE_SETTINGS:
+            BIND_ACTION_OK(cbs, action_ok_push_timezone_settings_list);
+            break;
+#endif
          case MENU_ENUM_LABEL_CORE_SETTINGS:
             BIND_ACTION_OK(cbs, action_ok_push_core_settings_list);
             break;

@@ -537,6 +537,9 @@ default_sublabel_macro(action_bind_sublabel_settings_show_video,                
 default_sublabel_macro(action_bind_sublabel_settings_show_audio,                   MENU_ENUM_SUBLABEL_SETTINGS_SHOW_AUDIO)
 default_sublabel_macro(action_bind_sublabel_settings_show_input,                   MENU_ENUM_SUBLABEL_SETTINGS_SHOW_INPUT)
 default_sublabel_macro(action_bind_sublabel_settings_show_latency,                 MENU_ENUM_SUBLABEL_SETTINGS_SHOW_LATENCY)
+#if HAVE_NIRCADA
+default_sublabel_macro(action_bind_sublabel_settings_show_timezone,                MENU_ENUM_SUBLABEL_SETTINGS_SHOW_TIMEZONE)
+#endif
 default_sublabel_macro(action_bind_sublabel_settings_show_core,                    MENU_ENUM_SUBLABEL_SETTINGS_SHOW_CORE)
 default_sublabel_macro(action_bind_sublabel_settings_show_configuration,           MENU_ENUM_SUBLABEL_SETTINGS_SHOW_CONFIGURATION)
 default_sublabel_macro(action_bind_sublabel_settings_show_saving,                  MENU_ENUM_SUBLABEL_SETTINGS_SHOW_SAVING)
@@ -573,6 +576,9 @@ default_sublabel_macro(action_bind_sublabel_content_show_video_layout,          
 #endif
 default_sublabel_macro(action_bind_sublabel_content_show_rewind,                   MENU_ENUM_SUBLABEL_CONTENT_SHOW_REWIND)
 default_sublabel_macro(action_bind_sublabel_content_show_latency,                  MENU_ENUM_SUBLABEL_CONTENT_SHOW_LATENCY)
+#ifdef HAVE_NIRCADA
+default_sublabel_macro(action_bind_sublabel_content_show_timezone,                 MENU_ENUM_SUBLABEL_CONTENT_SHOW_TIMEZONE)
+#endif
 default_sublabel_macro(action_bind_sublabel_quick_menu_show_save_core_overrides,   MENU_ENUM_SUBLABEL_QUICK_MENU_SHOW_SAVE_CORE_OVERRIDES)
 default_sublabel_macro(action_bind_sublabel_quick_menu_show_save_game_overrides,   MENU_ENUM_SUBLABEL_QUICK_MENU_SHOW_SAVE_GAME_OVERRIDES)
 default_sublabel_macro(action_bind_sublabel_quick_menu_show_information,           MENU_ENUM_SUBLABEL_QUICK_MENU_SHOW_INFORMATION)
@@ -1522,6 +1528,11 @@ int menu_cbs_init_bind_sublabel(menu_file_list_cbs_t *cbs,
          case MENU_ENUM_LABEL_SETTINGS_SHOW_LATENCY:
             BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_settings_show_latency);
             break;
+#ifdef HAVE_NIRCADA
+         case MENU_ENUM_LABEL_SETTINGS_SHOW_TIMEZONE:
+            BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_settings_show_timezone);
+            break;
+#endif
          case MENU_ENUM_LABEL_SETTINGS_SHOW_CORE:
             BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_settings_show_core);
             break;
@@ -1621,6 +1632,11 @@ int menu_cbs_init_bind_sublabel(menu_file_list_cbs_t *cbs,
          case MENU_ENUM_LABEL_CONTENT_SHOW_LATENCY:
             BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_content_show_latency);
             break;
+#ifdef HAVE_NIRCADA
+         case MENU_ENUM_LABEL_CONTENT_SHOW_TIMEZONE:
+            BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_content_show_timezone);
+            break;
+#endif
          case MENU_ENUM_LABEL_CONTENT_SHOW_REWIND:
             BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_content_show_rewind);
             break;
@@ -2764,6 +2780,11 @@ int menu_cbs_init_bind_sublabel(menu_file_list_cbs_t *cbs,
             break;
          case MENU_ENUM_LABEL_LATENCY_SETTINGS:
             BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_latency_settings_list);
+            break;
+         case MENU_ENUM_LABEL_TIMEZONE_SETTINGS:
+#ifdef HAVE_NIRCADA
+            BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_timezone_settings_list);
+#endif
             break;
          case MENU_ENUM_LABEL_RECORDING_SETTINGS:
             BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_recording_settings_list);

@@ -380,6 +380,12 @@ MSG_HASH(MENU_ENUM_LABEL_DEFERRED_INPUT_MENU_SETTINGS_LIST,
       "deferred_input_menu_settings_list")
 MSG_HASH(MENU_ENUM_LABEL_DEFERRED_LATENCY_SETTINGS_LIST,
       "deferred_latency_settings_list")
+#ifdef HAVE_NIRCADA
+MSG_HASH(
+   MENU_ENUM_LABEL_DEFERRED_TIMEZONE_SETTINGS_LIST,
+   "deferred_timezone_settings_list"
+   )
+#endif
 MSG_HASH(MENU_ENUM_LABEL_DEFERRED_AI_SERVICE_SETTINGS_LIST,
       "deferred_ai_service_settings_list")
 MSG_HASH(MENU_ENUM_LABEL_DEFERRED_ACCESSIBILITY_SETTINGS_LIST,
@@ -664,6 +670,12 @@ MSG_HASH(MENU_ENUM_LABEL_INPUT_SETTINGS_BEGIN,
       "input_settings_begin")
 MSG_HASH(MENU_ENUM_LABEL_LATENCY_SETTINGS,
       "latency_settings")
+#ifdef HAVE_NIRCADA
+MSG_HASH(
+   MENU_ENUM_LABEL_TIMEZONE_SETTINGS,
+   "timezone_settings"
+   )
+#endif
 MSG_HASH(MENU_ENUM_LABEL_INPUT_SMALL_KEYBOARD_ENABLE,
       "input_small_keyboard_enable")
 MSG_HASH(MENU_ENUM_LABEL_INPUT_TOUCH_ENABLE,
@@ -1868,6 +1880,12 @@ MSG_HASH(MENU_ENUM_LABEL_CONTENT_SHOW_REWIND,
       "menu_show_rewind_settings")
 MSG_HASH(MENU_ENUM_LABEL_CONTENT_SHOW_LATENCY,
       "menu_show_latency_settings")
+#ifdef HAVE_NIRCADA
+MSG_HASH(
+   MENU_ENUM_LABEL_CONTENT_SHOW_TIMEZONE,
+   "menu_show_timezone_settings"
+   )
+#endif
 MSG_HASH(MENU_ENUM_LABEL_CONTENT_SHOW_OVERLAYS,
       "menu_show_overlay_settings")
 #ifdef HAVE_VIDEO_LAYOUT

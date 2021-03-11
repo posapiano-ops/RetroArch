@@ -183,6 +183,9 @@ typedef struct settings
       bool menu_show_reboot;
       bool menu_show_shutdown;
       bool menu_show_latency;
+#ifdef HAVE_NIRCADA
+      bool menu_show_timezone;
+#endif
       bool menu_show_rewind;
       bool menu_show_overlays;
       bool menu_show_legacy_thumbnail_updater;
@@ -221,6 +224,9 @@ typedef struct settings
       bool settings_show_audio;
       bool settings_show_input;
       bool settings_show_latency;
+#ifdef HAVE_NIRCADA
+      bool settings_show_timezone;
+#endif
       bool settings_show_core;
       bool settings_show_configuration;
       bool settings_show_saving;
@@ -641,7 +647,9 @@ typedef struct settings
 
       char midi_input[32];
       char midi_output[32];
-
+#ifdef HAVE_NIRCADA
+      char timezone[64];
+#endif
       char youtube_stream_key[PATH_MAX_LENGTH];
       char twitch_stream_key[PATH_MAX_LENGTH];
 
@@ -723,6 +731,17 @@ typedef struct settings
    video_viewport_t video_viewport_custom;
 
 } settings_t;
+
+#ifdef HAVE_NIRCADA
+/**
+ * config_get_default_timezone:
+ *
+ * Gets the default timezone.
+ *
+ * Returns: Default timezone.
+ **/
+const char *config_get_default_timezone(void);
+#endif
 
 /**
  * config_get_default_camera:

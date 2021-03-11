@@ -1978,6 +1978,16 @@ MSG_HASH(MENU_ENUM_SUBLABEL_INPUT_USER_BINDS,
       "Configura i controlli per questa porta.")
 MSG_HASH(MENU_ENUM_SUBLABEL_LATENCY_SETTINGS,
     "Modifica le impostazioni relative a video, audio e input della latenza.")
+#ifdef HAVE_NIRCADA
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_TIMEZONE_SETTINGS,
+   "Fuso orario"
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_TIMEZONE_SETTINGS,
+   "Modifica le impostazioni del fuso orario."
+   )
+#endif
 MSG_HASH(MENU_ENUM_SUBLABEL_LOG_VERBOSITY,
       "Abilita o disabilita la registrazione al terminale.")
 MSG_HASH(MENU_ENUM_SUBLABEL_NETPLAY,

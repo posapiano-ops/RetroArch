@@ -2488,6 +2488,9 @@ static uintptr_t xmb_icon_get_id(xmb_handle_t *xmb,
       case MENU_ENUM_LABEL_START_NET_RETROPAD:
          return xmb->textures.list[XMB_TEXTURE_INPUT_SETTINGS];
       case MENU_ENUM_LABEL_LATENCY_SETTINGS:
+#ifdef HAVE_NIRCADA
+      case MENU_ENUM_LABEL_TIMEZONE_SETTINGS:
+#endif
          return xmb->textures.list[XMB_TEXTURE_LATENCY];
       case MENU_ENUM_LABEL_SAVING_SETTINGS:
       case MENU_ENUM_LABEL_SAVE_CURRENT_CONFIG:

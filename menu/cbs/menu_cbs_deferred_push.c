@@ -200,6 +200,9 @@ generic_deferred_push(deferred_push_input_haptic_feedback_settings_list,        
 generic_deferred_push(deferred_push_ai_service_settings_list,            DISPLAYLIST_AI_SERVICE_SETTINGS_LIST)
 generic_deferred_push(deferred_push_accessibility_settings_list,            DISPLAYLIST_ACCESSIBILITY_SETTINGS_LIST)
 generic_deferred_push(deferred_push_latency_settings_list,          DISPLAYLIST_LATENCY_SETTINGS_LIST)
+#ifdef HAVE_NIRCADA
+generic_deferred_push(deferred_push_timezone_settings_list,         DISPLAYLIST_TIMEZONE_SETTINGS_LIST)
+#endif
 generic_deferred_push(deferred_push_recording_settings_list,        DISPLAYLIST_RECORDING_SETTINGS_LIST)
 generic_deferred_push(deferred_push_playlist_settings_list,         DISPLAYLIST_PLAYLIST_SETTINGS_LIST)
 generic_deferred_push(deferred_push_playlist_manager_list,          DISPLAYLIST_PLAYLIST_MANAGER_LIST)
@@ -766,6 +769,9 @@ static int menu_cbs_init_bind_deferred_push_compare_label(
       {MENU_ENUM_LABEL_DEFERRED_AUDIO_RESAMPLER_SETTINGS_LIST, deferred_push_audio_resampler_settings_list},
       {MENU_ENUM_LABEL_DEFERRED_AUDIO_MIXER_SETTINGS_LIST, deferred_push_audio_mixer_settings_list},
       {MENU_ENUM_LABEL_DEFERRED_LATENCY_SETTINGS_LIST, deferred_push_latency_settings_list},
+#ifdef HAVE_NIRCADA
+      {MENU_ENUM_LABEL_DEFERRED_TIMEZONE_SETTINGS_LIST, deferred_push_timezone_settings_list},
+#endif
 #if defined(HAVE_LAKKA_SWITCH) || defined(HAVE_NIRCADA_SWITCH)
       {MENU_ENUM_LABEL_SWITCH_GPU_PROFILE, deferred_push_switch_gpu_profile},
       {MENU_ENUM_LABEL_SWITCH_BACKLIGHT_CONTROL, deferred_push_switch_backlight_control},
@@ -1157,6 +1163,11 @@ static int menu_cbs_init_bind_deferred_push_compare_label(
          case MENU_ENUM_LABEL_DEFERRED_LATENCY_SETTINGS_LIST:
             BIND_ACTION_DEFERRED_PUSH(cbs, deferred_push_latency_settings_list);
             break;
+#ifdef HAVE_NIRCADA
+         case MENU_ENUM_LABEL_DEFERRED_TIMEZONE_SETTINGS_LIST:
+            BIND_ACTION_DEFERRED_PUSH(cbs, deferred_push_timezone_settings_list);
+            break;
+#endif
          case MENU_ENUM_LABEL_DEFERRED_CORE_SETTINGS_LIST:
             BIND_ACTION_DEFERRED_PUSH(cbs, deferred_push_core_settings_list);
             break;

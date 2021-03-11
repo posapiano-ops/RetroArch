@@ -4685,6 +4685,16 @@ MSG_HASH(
     MENU_ENUM_SUBLABEL_LATENCY_SETTINGS,
     "Change settings related to video, audio and input latency."
     )
+#ifdef HAVE_NIRCADA
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_TIMEZONE_SETTINGS,
+   "Timezone"
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_TIMEZONE_SETTINGS,
+   "Change timezone settings."
+   )
+#endif
 MSG_HASH(
     MENU_ENUM_SUBLABEL_LOG_VERBOSITY,
     "Log events to a terminal or file."
